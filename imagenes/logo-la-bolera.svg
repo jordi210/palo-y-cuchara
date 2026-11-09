@@ -1,18 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" role="img" aria-labelledby="t d">
-<title id="t">La Bolera</title><desc id="d">Logotipo propuesto con tres bolos blancos, una bola de bolera azul y el nombre La Bolera en azul marino con un acento naranja.</desc>
-<defs><linearGradient id="ball" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#3C7DB5"/><stop offset=".55" stop-color="#244F84"/><stop offset="1" stop-color="#142F55"/></linearGradient></defs>
-<g transform="translate(655 31)">
-  <g stroke="#264C83" stroke-width="7" stroke-linejoin="round">
-    <path fill="#fff" d="M20 95c-5-8-4-15 4-20 11-9 12-21 11-36-2-14 6-26 22-26s24 12 22 26c-1 15 0 27 11 36 8 5 9 12 4 20-9 17-23 26-37 26S29 112 20 95z" transform="rotate(-24 57 66)"/>
-    <path fill="#fff" d="M141 90c-5-9-3-15 4-21 11-9 12-23 11-39-1-15 7-26 23-26s24 11 23 26c-1 16 0 30 11 39 8 6 9 12 4 21-9 18-23 27-38 27s-29-9-38-27z"/>
-    <path fill="#fff" d="M268 95c-5-8-4-15 4-20 11-9 12-21 11-36-2-14 6-26 22-26s24 12 22 26c-1 15 0 27 11 36 8 5 9 12 4 20-9 17-23 26-37 26s-28-9-37-26z" transform="rotate(24 305 66)"/>
-  </g>
-  <path d="M33 67h47M156 57h46M283 66h48" stroke="#F26C2D" stroke-width="9" stroke-linecap="round"/>
-  <circle cx="180" cy="139" r="78" fill="url(#ball)" stroke="#173C6A" stroke-width="6"/>
-  <circle cx="145" cy="111" r="10" fill="#eff5ff"/><circle cx="171" cy="95" r="10" fill="#eff5ff"/><circle cx="195" cy="117" r="10" fill="#eff5ff"/>
-  <path d="M73 193c25 39 69 60 116 58 46-2 88-24 115-60" fill="none" stroke="#F26C2D" stroke-width="14" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="510" viewBox="0 0 960 510" role="img" aria-labelledby="title desc">
+<title id="title">La Bolera</title>
+<desc id="desc">Emblema azul marino y naranja con tres bolos de bowling y una bola azul sobre una banda estilizada con el nombre La Bolera.</desc>
+<defs>
+ <radialGradient id="navy" cx="48%" cy="35%" r="75%"><stop stop-color="#3D8BCF"/><stop offset=".46" stop-color="#155896"/><stop offset="1" stop-color="#071E3C"/></radialGradient>
+ <radialGradient id="ball" cx="27%" cy="19%" r="88%"><stop stop-color="#A3DBFF"/><stop offset=".3" stop-color="#2478BF"/><stop offset=".68" stop-color="#0B427A"/><stop offset="1" stop-color="#061B3B"/></radialGradient>
+ <linearGradient id="pin" x1="0" x2="1" y1="0" y2=".32"><stop stop-color="#BECDE1"/><stop offset=".2" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFFFFF"/><stop offset=".95" stop-color="#9AACC5"/></linearGradient>
+ <linearGradient id="banner" x1="0" x2=".8" y1="0" y2="1"><stop stop-color="#174F88"/><stop offset=".52" stop-color="#10335F"/><stop offset="1" stop-color="#071F43"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFAA38"/><stop offset=".45" stop-color="#FA7B14"/><stop offset="1" stop-color="#EA4F18"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-25%" width="140%" height="155%"><feDropShadow dx="0" dy="10" stdDeviation="11" flood-color="#072248" flood-opacity=".24"/></filter>
+ <g id="pinshape">
+   <path d="M0 0 C-23 0 -37 16 -37 40 C-37 69 -26 86 -23 105 C-19 132 -31 149 -44 182 C-50 198 -41 215 -27 222 Q0 234 27 222 C41 215 50 198 44 182 C31 149 19 132 23 105 C26 86 37 69 37 40 C37 16 23 0 0 0Z" fill="url(#pin)" stroke="#173D6D" stroke-width="6"/>
+   <path d="M-27 84 Q0 96 27 84" stroke="#D92E2C" stroke-width="18" fill="none"/>
+   <path d="M-27 104 Q0 116 27 104" stroke="#D92E2C" stroke-width="12" fill="none"/>
+   <path d="M-14 19 C-24 30 -22 52 -17 66" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none" opacity=".85"/>
+ </g>
+</defs>
+<!-- Circular emblem with accent ring -->
+<g filter="url(#shadow)">
+ <circle cx="481" cy="233" r="194" fill="url(#navy)" stroke="#061C39" stroke-width="11"/>
+ <path d="M299 165 A195 195 0 0 1 667 165" fill="none" stroke="url(#orange)" stroke-width="19" stroke-linecap="round"/>
+ <path d="M340 356 A192 192 0 0 0 622 356" fill="none" stroke="#E5F2FF" stroke-opacity=".25" stroke-width="8"/>
 </g>
-<text x="48" y="224" font-family="Georgia, 'Times New Roman', serif" font-size="139" font-style="italic" font-weight="bold" letter-spacing="-6" fill="#1E487C">La Bolera</text>
-<path d="M50 252h510" stroke="#F26C2D" stroke-width="9" stroke-linecap="round"/>
-<text x="58" y="318" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="600" letter-spacing="9" fill="#3E628E">GOLF · AMIGOS · CELEBRACIÓN</text>
+<!-- Three bowling pins -->
+<use href="#pinshape" transform="translate(363 98) rotate(-18) scale(.74)"/>
+<use href="#pinshape" transform="translate(482 51) scale(.93)"/>
+<use href="#pinshape" transform="translate(596 98) rotate(18) scale(.74)"/>
+<!-- Bowling ball -->
+<circle cx="474" cy="261" r="110" fill="url(#ball)" stroke="#082C57" stroke-width="10"/>
+<path d="M400 208 Q435 176 463 180" fill="none" stroke="#B5E8FF" stroke-width="13" stroke-linecap="round" opacity=".85"/>
+<ellipse cx="503" cy="211" rx="15" ry="18" fill="#061A39" stroke="#85A5C9" stroke-width="3"/>
+<ellipse cx="533" cy="235" rx="15" ry="18" fill="#061A39" stroke="#85A5C9" stroke-width="3"/>
+<ellipse cx="490" cy="260" rx="15" ry="18" fill="#061A39" stroke="#85A5C9" stroke-width="3"/>
+<!-- Embossed banner, letterforms wholly within canvas -->
+<g filter="url(#shadow)">
+ <path d="M91 306 C185 266 286 280 357 304 C438 327 549 301 623 291 C727 277 819 300 889 328 L876 426 C720 459 604 448 469 452 C343 455 183 467 74 427Z" fill="url(#banner)" stroke="#4288CF" stroke-width="9"/>
+ <path d="M99 430 C225 482 410 476 565 465 C683 457 803 455 865 427" fill="none" stroke="url(#orange)" stroke-width="21" stroke-linecap="round"/>
+ <text x="481" y="400" text-anchor="middle" font-family="Georgia, 'Palatino Linotype', 'Times New Roman', serif" font-weight="bold" font-style="italic" font-size="118" letter-spacing="-5" fill="#061D3B" opacity=".68" transform="translate(3 6)">La Bolera</text>
+ <text x="481" y="400" text-anchor="middle" font-family="Georgia, 'Palatino Linotype', 'Times New Roman', serif" font-weight="bold" font-style="italic" font-size="118" letter-spacing="-5" fill="#FFFFFF">La Bolera</text>
+</g>
 </svg>
