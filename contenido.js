@@ -11,7 +11,7 @@ window.PYC_CONTENT = {
     "origenCanva": "https://paloycucara.my.canva.site/palo-y-cuchara",
     "inscripciones": "https://forms.gle/vy3kQ8X2Ez6xB6Sz9",
     "inicioImagen": "imagenes/campo-panoramico.jpg",
-    "portadaImagen": "imagenes/cabecera-torneo.jpg",
+    "portadaImagen": "imagenes/final-golf-palo-cuchara.webp",
     "cierreTemporada": false
   },
   "jornadas": [
