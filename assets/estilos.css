@@ -59,3 +59,8 @@ th{background:#edf3fa;color:#45668b}th,td{border-bottom-color:#dce6f0}tbody tr:h
 @media(max-width:850px){.hero::before{width:104px;height:104px;top:auto;bottom:25px;right:24px;opacity:.90}.hero-inner{padding-bottom:110px}}
 @media(max-width:800px){.header{height:78px}.menu{top:78px}.brand-emblem{width:57px;height:57px}}
 @media(max-width:550px){.brand-copy strong{font-size:20px}.brand-emblem{width:55px;height:55px}}
+
+/* Pestaña propia y destacada para el calendario de torneos */
+.menu a.calendar-tab{border:1px solid #f26c2d55;background:#fff4ed;color:#b64f1c;padding-inline:14px;white-space:nowrap}
+.menu a.calendar-tab:hover,.menu a.calendar-tab.active{background:#f26c2d;color:#fff;border-color:#f26c2d;box-shadow:0 3px 12px rgba(242,108,45,.15)}
+@media(max-width:800px){.menu a.calendar-tab{border-radius:7px}}
