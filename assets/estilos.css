@@ -108,3 +108,11 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
 .sponsor-bolera .bolera-graphic img{display:block;width:100%;max-width:100%;height:213px;object-fit:contain}
 @media(max-width:1050px){.sponsor-care .sponsor-graphic{padding:24px 27px}.sponsor-care .care-official-logo{max-height:134px}.sponsor-bolera .bolera-graphic img{height:190px}}
 @media(max-width:800px){.sponsor-care .sponsor-graphic{padding:24px 42px}.sponsor-care .care-official-logo{max-height:140px}.sponsor-bolera .bolera-graphic img{height:205px}}
+
+/* Versión corregida patrocinadores: marcas enteras y nuevo diseño exacto La Bolera */
+.sponsor-care .sponsor-graphic{background:#fff;padding:24px 34px;overflow:visible}
+.sponsor-care .care-official-logo{display:block;width:100%;height:auto;max-width:min(100%,310px);max-height:165px;aspect-ratio:auto;object-fit:contain;object-position:center}
+.sponsor-bolera .sponsor-graphic{background:#071b36;padding:10px 15px}
+.sponsor-bolera .bolera-graphic img{display:block;width:100%;max-width:350px;height:213px;object-fit:contain;object-position:center}
+@media(max-width:1000px){.sponsor-care .sponsor-graphic{padding:22px 25px}.sponsor-care .care-official-logo{max-width:100%}}
+@media(max-width:800px){.sponsor-care .sponsor-graphic{padding:30px 38px}.sponsor-care .care-official-logo{max-width:320px}.sponsor-bolera .sponsor-graphic{padding:8px 12px}}
