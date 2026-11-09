@@ -64,3 +64,28 @@ th{background:#edf3fa;color:#45668b}th,td{border-bottom-color:#dce6f0}tbody tr:h
 .menu a.calendar-tab{border:1px solid #f26c2d55;background:#fff4ed;color:#b64f1c;padding-inline:14px;white-space:nowrap}
 .menu a.calendar-tab:hover,.menu a.calendar-tab.active{background:#f26c2d;color:#fff;border-color:#f26c2d;box-shadow:0 3px 12px rgba(242,108,45,.15)}
 @media(max-width:800px){.menu a.calendar-tab{border-radius:7px}}
+
+/* Página independiente de Patrocinadores · estética azul y naranja */
+.menu a.sponsors-tab{border:1px solid #f26c2d;background:#f26c2d;color:#fff;white-space:nowrap;box-shadow:0 3px 12px rgba(242,108,45,.17)}
+.menu a.sponsors-tab:hover,.menu a.sponsors-tab.active{background:#d85720;color:#fff;border-color:#d85720}
+.sponsors-section{min-height:60vh}
+.sponsors-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px;align-items:stretch}
+.sponsor-card{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #dbe4ef;border-radius:15px;box-shadow:0 12px 36px rgba(35,75,128,.085);transition:transform .18s,box-shadow .18s;color:var(--ink)}
+a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,75,128,.16)}
+.sponsor-graphic{height:235px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(145deg,#fff,#f1f5fb);padding:22px;position:relative}
+.sponsor-graphic:after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#315f9c,#f26c2d)}
+.sponsor-overline{font:600 14px Arial,sans-serif;letter-spacing:.3em;color:#765c50}
+.care-mark{font:normal 80px/1 Georgia,serif;letter-spacing:.03em;color:#4e2e2e;margin:8px 0}
+.sponsor-submark{font:700 11px Arial,sans-serif;letter-spacing:.16em;color:#67809e}
+.idp-emblem{font-size:47px;margin-bottom:5px}
+.idp-mark{font:750 40px/1.08 Georgia,serif;letter-spacing:.04em;color:#315f9c;margin-bottom:13px}
+.bolera-graphic{padding:18px}
+.bolera-graphic img{display:block;width:100%;max-width:335px;height:178px;object-fit:contain}
+.sponsor-info{padding:25px 25px 28px;flex:1;display:flex;flex-direction:column}
+.sponsor-info h3{font:normal 29px/1.2 Georgia,serif;color:#234c80;margin:0 0 11px}
+.sponsor-info p{color:#657790;font-size:14px;line-height:1.65;flex:1;margin:0 0 18px}
+.sponsor-note{color:#77899a;font-size:12px;font-style:italic}
+.sponsor-footer{text-align:center;color:#486f9e;max-width:780px;margin:36px auto 0;font:italic 24px/1.4 Georgia,serif}
+.header{height:auto;min-height:88px}.nav-wrap{min-height:88px;height:auto;padding-block:7px}.menu{flex-wrap:wrap}
+@media(max-width:1050px){.sponsors-grid{gap:14px}.sponsor-graphic{height:210px}.care-mark{font-size:64px}.idp-mark{font-size:33px}.sponsor-info{padding:19px}.sponsor-info h3{font-size:24px}}
+@media(max-width:800px){.header{min-height:78px}.nav-wrap{min-height:78px}.sponsors-grid{grid-template-columns:1fr}.sponsor-graphic{height:220px}.sponsor-info{padding:23px}.sponsor-info h3{font-size:28px}.sponsor-footer{font-size:21px}}
