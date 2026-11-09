@@ -1,0 +1,24 @@
+PALO Y CUCHARA · WEB MULTIPÁGINA EDITABLE
+==========================================
+
+1) Descomprime toda la carpeta.
+2) Abre index.html en un navegador.
+3) Desde el menú abre «Editar» (editar.html).
+4) Modifica las secciones y pulsa «Guardar cambios» para previsualizar en ese navegador.
+5) Para hacer los cambios permanentes/publicarlos: «Descargar contenido.js» y reemplazar el contenido.js anterior en el alojamiento web.
+
+Páginas: Inicio, Orden de mérito, Calendario, Campeones, Galería, Curiosidades, Normas y Editar.
+
+RESULTADOS
+No se incluyen torneos mensuales de temporadas anteriores. La única referencia anterior es el homenaje a los campeones.
+La clasificación actual se inicia vacía para no inventar resultados. Se alimenta con puntuaciones oficiales separadas de Scratch y Hándicap.
+Las ausencias valen 0; los dos peores resultados se descartan al cerrar la temporada.
+
+FOTOGRAFÍAS
+Se incluyen tres imágenes de la Base Aérea recuperadas de tus archivos. Los nombres de 29 curiosidades se han recuperado de tu Canva. Sus fotografías originales no se han podido descargar todas y están señaladas para incorporarlas mediante el editor. Ver el enlace a la web original.
+
+PUBLICACIÓN
+Esto NO cambia tu web de Canva ni publica una nueva página de Internet. Para publicar necesitas subir esta carpeta completa a un alojamiento de web estática. La guía GUIA.html explica cómo editar.
+
+PARTICIPANTES
+En el editor puedes añadir los jugadores inscritos, uno por línea. Incluso si faltan a una jornada, se mostrarán con cero puntos.
