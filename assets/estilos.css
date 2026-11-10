@@ -116,3 +116,14 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
 .sponsor-bolera .bolera-graphic img{display:block;width:100%;max-width:350px;height:213px;object-fit:contain;object-position:center}
 @media(max-width:1000px){.sponsor-care .sponsor-graphic{padding:22px 25px}.sponsor-care .care-official-logo{max-width:100%}}
 @media(max-width:800px){.sponsor-care .sponsor-graphic{padding:30px 38px}.sponsor-care .care-official-logo{max-width:320px}.sponsor-bolera .sponsor-graphic{padding:8px 12px}}
+
+/* Album del torneo de noviembre 2026 */
+.album-subhead{margin-top:52px;margin-bottom:20px}.album-subhead h2{font-size:clamp(25px,3.2vw,37px)}
+.destacados-grid .photo-card{box-shadow:0 10px 28px #12385818;border:1px solid #d2dde9}
+.destacados-grid .photo-card img{height:270px;object-fit:cover;object-position:center}
+.destacados-grid .photo-info{border-top:3px solid #f26c2d;padding:17px 20px 19px}
+.destacados-grid .photo-info h3{font-size:24px;line-height:1.18}
+.destacados-grid .photo-info p{font-size:14px;line-height:1.5;color:#586578}
+.recuerdos-grid .photo-card img{height:215px;object-fit:cover}
+.recuerdos-grid .photo-info h3{font-size:20px}
+@media(max-width:800px){.album-subhead{margin-top:35px}.destacados-grid .photo-card img{height:250px}}
