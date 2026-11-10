@@ -11,3 +11,7 @@ Las fotografías originales de algunas curiosidades de Canva aún están pendien
 ## Procedimiento para los torneos mensuales
 
 La publicación de nuevas fotografías se hace siguiendo el [procedimiento permanente de torneos](docs/procedimiento-torneos.md): una tarjeta por mes en la Galería, álbum propio, tres premiados destacados primero, fotos originales en WebP de alta calidad y verificación de GitHub Pages. Este es el procedimiento de referencia para los próximos torneos.
+
+## Resultados mensuales
+
+La pestaña [Resultados](resultados.html) es un índice de clasificaciones organizadas por meses. Cada torneo tiene su propia página con Scratch y Hándicap; por ejemplo, [Resultados de noviembre de 2026](resultados-noviembre-2026.html). Los nuevos meses se añadirán siguiendo el [procedimiento permanente](docs/procedimiento-torneos.md), sin sobrescribir los anteriores. El Orden de mérito es una clasificación acumulada distinta.
