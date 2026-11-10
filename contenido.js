@@ -132,28 +132,28 @@ window.PYC_CONTENT = {
       "titulo": "Un detalle para recordar",
       "descripcion": "Otro de los reconocimientos de la jornada.",
       "categoria": "Entrega de premios",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-11.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-11.webp",
       "destacado": false
     },
     {
       "titulo": "El buen ambiente",
       "descripcion": "Una jornada que también se disfruta alrededor de la mesa.",
       "categoria": "El hoyo 19",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-12.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-12.webp",
       "destacado": false
     },
     {
       "titulo": "Amigos en La Bolera",
       "descripcion": "El encuentro después del golf.",
       "categoria": "El hoyo 19",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-13.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-13.webp",
       "destacado": false
     },
     {
       "titulo": "Recuerdos de noviembre",
       "descripcion": "El mejor cierre para una jornada entre amigos.",
       "categoria": "El hoyo 19",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-14.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-14.webp",
       "destacado": false
     }
   ],
