@@ -139,3 +139,11 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
 .album-tile-info strong{color:var(--deep);border-bottom:2px solid var(--gold);padding-bottom:5px;font-size:15px;margin-top:13px}
 .album-back{margin:0 0 26px}
 @media(max-width:620px){.album-tile{grid-template-columns:1fr}.album-tile>img{height:220px;min-height:0}.album-tile-info{padding:25px}}
+
+/* Resultados mensuales: portada y clasificación de cada jornada. */
+.resultados-mes-card .album-tile-info{gap:13px}
+.resultados-mes-meta{display:block;font-size:13px;font-weight:800;color:var(--deep);background:#edf3fa;padding:9px 12px;border-radius:8px;line-height:1.5}
+.monthly-results .album-back{margin-bottom:30px}
+.monthly-results .tabs{max-width:100%;flex-wrap:wrap}
+.monthly-results .tabs button{white-space:nowrap}
+@media(max-width:600px){.monthly-results .tabs{width:100%;display:flex;gap:4px}.monthly-results .tabs button{flex:1;white-space:normal;min-width:128px;padding:10px}.resultados-mes-card .album-tile-info{gap:9px}}
