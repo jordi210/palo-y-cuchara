@@ -57,161 +57,75 @@ window.PYC_CONTENT = {
     {"titulo":"Viejos tiempos","imagen":"","descripcion":""},
     {"titulo":"El Pilar","imagen":"","descripcion":""}
   ],
-  "galeriaNoviembre": [
-    {
-        "titulo": "1er clasificado Scratch",
-        "descripcion": "¡Enhorabuena por el primer puesto Scratch!",
-        "categoria": "Ganadores",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-01.webp"
-    },
-    {
-        "titulo": "1er clasificado Hándicap",
-        "descripcion": "¡Enhorabuena por la victoria en Hándicap!",
-        "categoria": "Ganadores",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-02.webp"
-    },
-    {
-        "titulo": "2º clasificado Hándicap",
-        "descripcion": "¡Felicidades por el segundo puesto Hándicap!",
-        "categoria": "Ganadores",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-03.webp"
-    },
-    {
-        "titulo": "Entrega de premios",
-        "descripcion": "Un gran momento de celebración entre compañeros.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-04.webp"
-    },
-    {
-        "titulo": "Premiados de noviembre",
-        "descripcion": "Un recuerdo de los protagonistas de la jornada.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-05.webp"
-    },
-    {
-        "titulo": "Obsequios de Bodegas CARE",
-        "descripcion": "Los premios y regalos que acompañaron al torneo.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-06.webp"
-    },
-    {
-        "titulo": "Compartiendo los premios",
-        "descripcion": "Alegría y compañerismo en La Bolera.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-07.webp"
-    },
-    {
-        "titulo": "La comida de noviembre",
-        "descripcion": "La mejor manera de cerrar una gran jornada.",
-        "categoria": "El hoyo 19",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-08.webp"
-    },
-    {
-        "titulo": "Momentos de la comida",
-        "descripcion": "Golf y amistad alrededor de la mesa.",
-        "categoria": "El hoyo 19",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-09.webp"
-    },
-    {
-        "titulo": "Trofeos y regalos",
-        "descripcion": "Gracias a quienes colaboraron con los premios.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-10.webp"
-    },
-    {
-        "titulo": "Buen ambiente en La Bolera",
-        "descripcion": "Una jornada para recordar entre amigos.",
-        "categoria": "El hoyo 19",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-11.jpg"
-    },
-    {
-        "titulo": "Amigos de Palo y Cuchara",
-        "descripcion": "Siempre es buen momento para una foto juntos.",
-        "categoria": "El hoyo 19",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-12.jpg"
-    },
-    {
-        "titulo": "Los protagonistas del torneo",
-        "descripcion": "Celebrando juntos los mejores momentos.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-13.jpg"
-    },
-    {
-        "titulo": "El espíritu de noviembre",
-        "descripcion": "Compañerismo, premios y buen humor.",
-        "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-14.jpg"
-    }
-],
   "galeriaNoviembre2026": [
     {
       "titulo": "1.º clasificado Scratch",
       "descripcion": "¡Enhorabuena al ganador Scratch por su gran jornada!",
       "categoria": "Premiados",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-01.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-01.webp",
       "destacado": true
     },
     {
       "titulo": "1.º clasificado Hándicap",
       "descripcion": "¡Felicidades por el primer puesto Hándicap!",
       "categoria": "Premiados",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-02.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-02.webp",
       "destacado": true
     },
     {
       "titulo": "2.º clasificado Hándicap",
       "descripcion": "¡Enhorabuena por el segundo puesto Hándicap!",
       "categoria": "Premiados",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-03.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-03.webp",
       "destacado": true
     },
     {
       "titulo": "La celebración continúa",
       "descripcion": "La entrega de premios, uno de los mejores momentos.",
       "categoria": "Entrega de premios",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-04.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-04.webp",
       "destacado": false
     },
     {
       "titulo": "Los reconocimientos",
       "descripcion": "Un recuerdo de los premios de noviembre.",
       "categoria": "Entrega de premios",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-05.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-05.webp",
       "destacado": false
     },
     {
       "titulo": "Premios de nuestros patrocinadores",
       "descripcion": "Agradecimiento especial a quienes apoyan el torneo.",
       "categoria": "Entrega de premios",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-06.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-06.webp",
       "destacado": false
     },
     {
       "titulo": "Más momentos de la entrega",
       "descripcion": "La alegría compartida tras una jornada de golf.",
       "categoria": "Entrega de premios",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-07.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-07.webp",
       "destacado": false
     },
     {
       "titulo": "La mesa del torneo",
       "descripcion": "Una gran comida después del recorrido.",
       "categoria": "El hoyo 19",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-08.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-08.webp",
       "destacado": false
     },
     {
       "titulo": "Entre compañeros",
       "descripcion": "Golf, amistad y una buena sobremesa.",
       "categoria": "El hoyo 19",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-09.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-09.webp",
       "destacado": false
     },
     {
       "titulo": "Premiados y compañeros",
       "descripcion": "Celebrando juntos los resultados de noviembre.",
       "categoria": "Entrega de premios",
-      "imagen": "imagenes/torneo-noviembre-2026/foto-10.jpg",
+      "imagen": "imagenes/torneo-noviembre-2026/foto-10.webp",
       "destacado": false
     },
     {
