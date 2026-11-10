@@ -47,6 +47,33 @@ Mantener la web con una **Galería que sea exclusivamente un índice de álbumes
 7. Facilitar los dos enlaces: **`https://paloycuchara.es/galeria.html`** y el enlace al álbum del mes; si el dominio personalizado falla por DNS, diferenciar el problema DNS del estado de publicación en GitHub.
 8. Confirmar lo realmente publicado y señalar cualquier parte pendiente. **No decir «publicado» antes de verificarlo.**
 
+## Resultados oficiales organizados por meses (norma permanente)
+
+**La pestaña «Resultados» funciona como un índice de torneos por meses, igual que la Galería.** No se colocan en ella todas las clasificaciones juntas.
+
+### Publicación de cada torneo
+1. Recibir las hojas **oficiales Scratch y Hándicap** de la jornada (preferentemente Excel) y validar nombres, puntuaciones, puestos, NP y NE. No inventar resultados.
+2. Guardar ambas clasificaciones en `contenido.js` dentro de una **clave propia para ese mes** (por ejemplo, `resultadosDiciembre`), sin sustituir `resultadosNoviembre` ni los meses anteriores.
+3. Añadir una entrada a la colección `resultadosMensuales` de `contenido.js` con:
+   - `id`: por ejemplo, `2026-12`.
+   - `fecha`: fecha real del torneo, formato `YYYY-MM-DD`.
+   - `temporada`: por ejemplo `2026–2027`.
+   - `titulo`: **«Resultados de diciembre»**.
+   - `descripcion`: breve texto de la jornada.
+   - `pagina`: **`resultados-diciembre-2026.html`**.
+   - `clave`: **`resultadosDiciembre`** (la misma clave del paso 2).
+   - `portada` (opcional): fotografía del mes en `imagenes/...`.
+4. Crear la página mensual `resultados-diciembre-2026.html`, copiando la plantilla de `resultados-noviembre-2026.html` y cambiando los atributos del `body` a `data-page="resultados-mes" data-month="2026-12"`. Actualizar los metadatos (título, descripción) y la versión de caché de CSS/JS.
+5. El índice `resultados.html` lista automáticamente `resultadosMensuales` **por fecha, del más reciente al más antiguo**, con una tarjeta por torneo. Al pulsar se abre la página de ese mes.
+6. La página de cada mes muestra las pestañas **Hándicap** y **Scratch**, con todas las posiciones y puntos originales, y el enlace de vuelta a **Resultados por meses**.
+7. Actualizar por separado el **Orden de mérito** acumulado de la temporada conforme a las normas (incluyendo jornadas sin participación, puntuaciones cero y descartes cuando corresponda). **No confundir** resultados del torneo con acumulado de temporada.
+8. Confirmar que el índice, los enlaces del mes y ambas pestañas funcionan, que los recuentos coinciden con los archivos oficiales y que **GitHub Pages** ha publicado correctamente. No borrar meses anteriores.
+
+### Ejemplo ya publicado
+- Índice: `resultados.html` → **Resultados de noviembre**.
+- Página del torneo: `resultados-noviembre-2026.html`, con los 37 registros Scratch y los 37 registros Hándicap facilitados por la organización.
+- Este sistema se utiliza también para diciembre y todos los torneos futuros.
+
 ## Si también se reciben clasificaciones
 Actualizar las secciones de **Resultados** y **Orden de mérito** desde los archivos oficiales, respetando Scratch, Hándicap, NP/NE y las normas de cálculo de la temporada. Esto no modifica por sí solo el orden de fotografías: el álbum mantiene siempre su propio apartado de premiados.
 
