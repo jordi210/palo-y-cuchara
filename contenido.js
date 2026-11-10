@@ -62,61 +62,61 @@ window.PYC_CONTENT = {
         "titulo": "1er clasificado Scratch",
         "descripcion": "¡Enhorabuena por el primer puesto Scratch!",
         "categoria": "Ganadores",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-01.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-01.webp"
     },
     {
         "titulo": "1er clasificado Hándicap",
         "descripcion": "¡Enhorabuena por la victoria en Hándicap!",
         "categoria": "Ganadores",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-02.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-02.webp"
     },
     {
         "titulo": "2º clasificado Hándicap",
         "descripcion": "¡Felicidades por el segundo puesto Hándicap!",
         "categoria": "Ganadores",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-03.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-03.webp"
     },
     {
         "titulo": "Entrega de premios",
         "descripcion": "Un gran momento de celebración entre compañeros.",
         "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-04.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-04.webp"
     },
     {
         "titulo": "Premiados de noviembre",
         "descripcion": "Un recuerdo de los protagonistas de la jornada.",
         "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-05.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-05.webp"
     },
     {
         "titulo": "Obsequios de Bodegas CARE",
         "descripcion": "Los premios y regalos que acompañaron al torneo.",
         "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-06.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-06.webp"
     },
     {
         "titulo": "Compartiendo los premios",
         "descripcion": "Alegría y compañerismo en La Bolera.",
         "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-07.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-07.webp"
     },
     {
         "titulo": "La comida de noviembre",
         "descripcion": "La mejor manera de cerrar una gran jornada.",
         "categoria": "El hoyo 19",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-08.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-08.webp"
     },
     {
         "titulo": "Momentos de la comida",
         "descripcion": "Golf y amistad alrededor de la mesa.",
         "categoria": "El hoyo 19",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-09.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-09.webp"
     },
     {
         "titulo": "Trofeos y regalos",
         "descripcion": "Gracias a quienes colaboraron con los premios.",
         "categoria": "Entrega de premios",
-        "imagen": "imagenes/torneo-noviembre-2026/foto-10.jpg"
+        "imagen": "imagenes/torneo-noviembre-2026/foto-10.webp"
     },
     {
         "titulo": "Buen ambiente en La Bolera",
