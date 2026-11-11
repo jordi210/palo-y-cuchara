@@ -17,6 +17,42 @@ try:
    r=requests.get(u,timeout=12,allow_redirects=True)
    report["dns"][u]={"status":r.status_code,"final_url":r.url,"length":len(r.content)}
   except Exception as e: report["dns"][u]={"error":str(e)}
+ # Comprobar de nuevo el sitio REAL en Internet, no solo los archivos de GitHub.
+ report["live"]={"pages":{},"assets":{},"security":{}}
+ official="https://paloycuchara.es/"
+ for page_path in PAGES:
+  target=official+("" if page_path=="index.html" else page_path)
+  try:
+   r=requests.get(target,timeout=18,allow_redirects=True)
+   body=r.text
+   title_match=re.search(r"<title>([^<]+)</title>",body,re.I)
+   result={"status":r.status_code,"final":r.url,"size":len(r.content),"title":title_match.group(1) if title_match else None,"has_h1":"<h1" in body,"has_canonical":'<link rel="canonical"' in body,"has_robots_noindex":'name="robots" content="noindex' in body}
+   report["live"]["pages"][page_path]=result
+   if r.status_code!=200:report["issues"].append(f"Web pública {page_path}: HTTP {r.status_code}")
+   if not r.url.startswith("https://"):report["issues"].append(f"Web pública {page_path}: no termina en HTTPS: {r.url}")
+   if not result["has_h1"] and page_path!="editar.html":report["issues"].append(f"Web pública {page_path}: falta H1 precargado")
+   if page_path!="editar.html" and not result["has_canonical"]:report["issues"].append(f"Web pública {page_path}: falta canonical")
+   if page_path=="editar.html" and not result["has_robots_noindex"]:report["issues"].append("Editor público no lleva noindex")
+  except Exception as e:
+   report["live"]["pages"][page_path]={"error":str(e)[:170]}
+   report["issues"].append(f"No se puede comprobar {page_path} en producción: {type(e).__name__}")
+ for name in ["sitemap.xml","robots.txt","imagenes/logo-idp-golf-oficial.png","imagenes/torneo-noviembre-2026/foto-01.webp","imagenes/torneo-noviembre-2026/foto-14.webp","imagenes/curiosidades/canva-01.webp","imagenes/curiosidades/canva-30.mp4"]:
+  target=official+name
+  try:
+   response=requests.head(target,allow_redirects=True,timeout=18)
+   report["live"]["assets"][name]={"status":response.status_code,"final":response.url,"content_type":response.headers.get("content-type"),"bytes":response.headers.get("content-length")}
+   if response.status_code!=200:report["issues"].append(f"Recurso público {name}: HTTP {response.status_code}")
+  except Exception as e:
+   report["live"]["assets"][name]={"error":str(e)[:170]}
+   report["issues"].append(f"Error al comprobar recurso público {name}")
+ try:
+  old=requests.get("http://paloycuchara.es/",allow_redirects=False,timeout=18)
+  report["live"]["security"]["http_status"]=old.status_code
+  report["live"]["security"]["redirect_location"]=old.headers.get("location","")
+  if old.status_code not in [301,302,307,308] or not old.headers.get("location","").startswith("https://"):
+   report["warnings"].append("HTTP no redirige directamente a HTTPS a nivel de servidor")
+ except Exception as e:
+  report["live"]["security"]["http_error"]=str(e)[:170]
  excepts=0
  server=subprocess.Popen([sys.executable,"-m","http.server","8765","--bind","127.0.0.1","--directory",str(ROOT)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
  time.sleep(1.5)
@@ -124,6 +160,7 @@ except Exception as e:
 open(ROOT/"AUDITORIA_WEB.json","w",encoding="utf8").write(json.dumps(report,indent=2,ensure_ascii=False))
 print("===== AUDITORIA RESUMEN =====")
 print(json.dumps({k:report[k] for k in ["dns","issues","warnings","mobile","functional"]},ensure_ascii=False,indent=2))
+print("===== LIVE PUBLICADO =====",json.dumps(report.get("live",{}),ensure_ascii=False,indent=2))
 print("===== RESPONSIVE =====",json.dumps(report.get('responsive',{}),ensure_ascii=False))
 print("===== PÁGINAS =====")
 for p,v in report["pages"].items():print(p, "HTTP",v["status"],"title",v["title"],"h1",v["heading"],"links",v["links"],"images",v["images"],"broken",len(v["broken_images"]),"scripts",v["page_errors"],"console",v["console_errors"])
