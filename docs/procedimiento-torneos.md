@@ -79,3 +79,16 @@ Actualizar las secciones de **Resultados** y **Orden de mérito** desde los arch
 
 ## Regla de continuidad
 Cada nuevo mes **se añade** al índice general y crea su propio álbum, sin borrar fotos, resultados ni páginas de meses anteriores. Se aplica este procedimiento de forma recurrente siempre que el organizador envíe las imágenes del siguiente torneo.
+
+## Orden de mérito: detalle de los ocho meses
+
+La tabla de **Orden de mérito** contiene exactamente estas columnas, tanto para Scratch como para Hándicap:
+
+**Posición · Jugador/a · Noviembre · Diciembre · Enero · Febrero · Marzo · Abril · Mayo · Junio · Puntos**.
+
+- Cada columna mensual muestra los puntos oficiales de esa jornada. Si hay más de una jornada en un mes, se suman las puntuaciones de ese jugador.
+- Cuando **todavía no se han publicado resultados del mes**, mostrar **—** (no inventar ceros).
+- Cuando ya hay resultados del mes, pero un jugador **no puntuó o no participó**, mostrar **0**.
+- La columna final **Puntos** mantiene la clasificación acumulada de la temporada; al cerrar la temporada aplica los dos descartes previstos.
+- Las ocho columnas están visibles desde noviembre, aunque no se hayan celebrado los meses futuros. En dispositivos pequeños la tabla se desplaza horizontalmente, manteniendo la posición y el nombre del jugador a la vista.
+- Los encabezados y las puntuaciones se generan con `mesesOrdenMerito()`, `playersFor()` y `renderTable()` en `assets/web.js`. Para próximas temporadas se utilizan automáticamente los años de `sitio.temporada` del archivo `contenido.js`.
