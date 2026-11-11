@@ -1,0 +1,41 @@
+name: Comprobar SEO y páginas indexables
+on:
+  push:
+    paths:
+      - ".github/workflows/comprobar-seo.yml"
+      - "scripts/actualizar-seo.mjs"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  comprobar-seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar instantáneas HTML de cada sección
+        run: node scripts/actualizar-seo.mjs --check
+      - name: Comprobar sitemap, robots, títulos y datos estructurados
+        run: |
+          python - <<'PY'
+          import json,xml.etree.ElementTree as ET
+          from html.parser import HTMLParser
+          from pathlib import Path
+          c=json.loads(Path("docs/seo-paginas.json").read_text())
+          xml=ET.parse("sitemap.xml").getroot()
+          ns={"s":"http://www.sitemaps.org/schemas/sitemap/0.9"}
+          locs=[e.text for e in xml.findall(".//s:loc",ns)]
+          assert len(locs)==len(c["paginas"]), (len(locs),len(c["paginas"]))
+          assert len(set(locs))==len(locs)
+          assert "Sitemap: https://paloycuchara.es/sitemap.xml" in Path("robots.txt").read_text()
+          for p in c["paginas"]:
+              html=Path(p["path"]).read_text()
+              assert "<title>"+p["title"]+"</title>" in html,p["path"]+" título"
+              assert 'name="description"' in html,p["path"]+" descripción"
+              assert 'name="robots" content="index,follow' in html,p["path"]+" robots"
+              assert '<script type="application/ld+json">' in html,p["path"]+" datos estructurados"
+              assert "SEO prerender start" in html,p["path"]+" static"
+              assert '<h1' in html,p["path"]+" H1"
+              assert "og:image" in html,p["path"]+" imagen"
+              assert '<link rel="canonical" href="'+c["dominio"]+(p["path"] if p["path"]!="index.html" else "")+'"' in html,p["path"]+" canonical"
+          print("ÉXITO:",len(locs),"páginas, sitemap, robots y metadatos comprobados.")
+          PY
