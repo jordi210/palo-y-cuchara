@@ -36,7 +36,15 @@ try:
   except Exception as e:
    report["live"]["pages"][page_path]={"error":str(e)[:170]}
    report["issues"].append(f"No se puede comprobar {page_path} en producción: {type(e).__name__}")
- for name in ["sitemap.xml","robots.txt","imagenes/logo-idp-golf-oficial.png","imagenes/torneo-noviembre-2026/foto-01.webp","imagenes/torneo-noviembre-2026/foto-14.webp","imagenes/curiosidades/canva-01.webp","imagenes/curiosidades/canva-30.mp4"]:
+ # Todas las fotografías y vídeos publicados se comprueban por sus rutas REALES.
+ # Esto evita falsas alertas por inventar nombres de ficheros que no existen.
+ media=["sitemap.xml","robots.txt","imagenes/logo-idp-golf-oficial.png"]
+ media += [str(p.relative_to(ROOT)) for p in sorted((ROOT/"imagenes/torneo-noviembre-2026").glob("*.webp"))]
+ manifest=json.loads((ROOT/"docs/curiosidades-canva-assets.json").read_text(encoding="utf8"))
+ for item in manifest["items"]:
+  media.append(item["imagen"])
+  if item.get("video"): media.append(item["video"])
+ for name in dict.fromkeys(media):
   target=official+name
   try:
    response=requests.head(target,allow_redirects=True,timeout=18)
@@ -160,6 +168,7 @@ except Exception as e:
 open(ROOT/"AUDITORIA_WEB.json","w",encoding="utf8").write(json.dumps(report,indent=2,ensure_ascii=False))
 print("===== AUDITORIA RESUMEN =====")
 print(json.dumps({k:report[k] for k in ["dns","issues","warnings","mobile","functional"]},ensure_ascii=False,indent=2))
+print("===== RECURSOS PÚBLICOS COMPROBADOS =====",len(report.get("live",{}).get("assets",{})))
 print("===== LIVE PUBLICADO =====",json.dumps(report.get("live",{}),ensure_ascii=False,indent=2))
 print("===== RESPONSIVE =====",json.dumps(report.get('responsive',{}),ensure_ascii=False))
 print("===== PÁGINAS =====")
