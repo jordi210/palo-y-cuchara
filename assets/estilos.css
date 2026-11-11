@@ -147,3 +147,20 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
 .monthly-results .tabs{max-width:100%;flex-wrap:wrap}
 .monthly-results .tabs button{white-space:nowrap}
 @media(max-width:600px){.monthly-results .tabs{width:100%;display:flex;gap:4px}.monthly-results .tabs button{flex:1;white-space:normal;min-width:128px;padding:10px}.resultados-mes-card .album-tile-info{gap:9px}}
+
+/* Curiosidades recuperadas del diseño Canva: dos páginas originales, 5 x 3 elementos.
+   Se mantiene el fondo oscuro y el título dorado en cursiva del documento original. */
+.curiosidades-canva-page{background:#1b1f24;border-radius:13px;padding:26px 25px 30px;margin:0 0 28px;box-shadow:0 15px 35px #0a19272c}
+.curiosidades-canva-heading{display:flex;align-items:center;justify-content:center;position:relative;margin:0 auto 25px;color:#d7bf77;font:italic 36px Georgia,serif;letter-spacing:.02em;text-align:center}
+.curiosidades-canva-heading small{position:absolute;right:3px;top:10px;font:600 12px system-ui,sans-serif;color:#d7bf77a0}
+.curiosidades-canva-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:14px;row-gap:26px;align-items:start}
+.curiosidad-canva-item{display:flex;flex-direction:column;gap:10px;align-items:stretch;min-width:0;padding:0;margin:0;appearance:none;-webkit-appearance:none;border:0;background:transparent;color:inherit;text-align:center;cursor:pointer}
+.curiosidad-canva-item img,.curiosidad-canva-item video{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:4px;background:#101318;border:1px solid #f3e9ce10}
+.curiosidad-canva-item img{transition:filter .18s,transform .18s}
+.curiosidad-canva-item:hover img{filter:brightness(1.08);transform:translateY(-2px)}
+.curiosidad-canva-item video{cursor:pointer;object-fit:cover}
+.curiosidad-canva-item h3{margin:0;color:#d9bb67;font:italic 16px/1.32 Georgia,serif;min-height:38px;display:flex;align-items:flex-start;justify-content:center}
+.curiosidad-canva-item:focus-visible{outline:2px solid #d9bb67;outline-offset:5px}
+@media(max-width:1050px){.curiosidades-canva-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.curiosidades-canva-heading{font-size:33px}}
+@media(max-width:700px){.curiosidades-canva-page{padding:20px 15px 23px}.curiosidades-canva-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.curiosidad-canva-item h3{font-size:14px;min-height:35px}}
+@media(max-width:470px){.curiosidades-canva-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}.curiosidades-canva-heading{font-size:28px}.curiosidad-canva-item h3{font-size:15px}}
