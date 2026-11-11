@@ -38,35 +38,190 @@ window.PYC_CONTENT = {
     "nota":"Reconocimiento especial a los protagonistas de la temporada anterior. No se publicará el archivo mensual de torneos de aquella temporada."
   },
   "curiosidades": [
-    {"titulo":"Hoyo 1","imagen":"","descripcion":""},
-    {"titulo":"Procesionaria","imagen":"","descripcion":""},
-    {"titulo":"Las reglas locales","imagen":"","descripcion":""},
-    {"titulo":"Escuadrón de garzas","imagen":"","descripcion":""},
-    {"titulo":"La bola perdida","imagen":"","descripcion":""},
-    {"titulo":"El hoyo 19","imagen":"","descripcion":""},
-    {"titulo":"La pista","imagen":"","descripcion":""},
-    {"titulo":"La fideuá de Pascual","imagen":"","descripcion":""},
-    {"titulo":"Setica","imagen":"","descripcion":""},
-    {"titulo":"Cazafantasmas","imagen":"","descripcion":""},
-    {"titulo":"Otra fideuá","imagen":"","descripcion":""},
-    {"titulo":"Los gemelos","imagen":"","descripcion":""},
-    {"titulo":"El baño del 6","imagen":"","descripcion":""},
-    {"titulo":"Setas en el chopo","imagen":"","descripcion":""},
-    {"titulo":"Árbol vaaa","imagen":"","descripcion":""},
-    {"titulo":"El Moncayo","imagen":"","descripcion":""},
-    {"titulo":"Upupa epops o abubilla","imagen":"","descripcion":""},
-    {"titulo":"Se nos cae el cielo","imagen":"","descripcion":""},
-    {"titulo":"F18","imagen":"","descripcion":""},
-    {"titulo":"Swing","imagen":"","descripcion":""},
-    {"titulo":"El ruido","imagen":"","descripcion":""},
-    {"titulo":"Las chicas","imagen":"","descripcion":""},
-    {"titulo":"Hoyo 3","imagen":"","descripcion":""},
-    {"titulo":"Los regalos","imagen":"","descripcion":""},
-    {"titulo":"El pateo","imagen":"","descripcion":""},
-    {"titulo":"Bodegón 4","imagen":"","descripcion":""},
-    {"titulo":"Bodegón 5","imagen":"","descripcion":""},
-    {"titulo":"Viejos tiempos","imagen":"","descripcion":""},
-    {"titulo":"El Pilar","imagen":"","descripcion":""}
+    {
+      "titulo": "Hoyo 1",
+      "imagen": "imagenes/curiosidades/canva-01.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Procesionaria",
+      "imagen": "imagenes/curiosidades/canva-02.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Las reglas locales",
+      "imagen": "imagenes/curiosidades/canva-03.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Escuadron de Garzas",
+      "imagen": "imagenes/curiosidades/canva-04.jpg",
+      "video": "imagenes/curiosidades/canva-04.mp4",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "La bola perdida",
+      "imagen": "imagenes/curiosidades/canva-05.jpg",
+      "video": "imagenes/curiosidades/canva-05.mp4",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "El hoyo 19",
+      "imagen": "imagenes/curiosidades/canva-06.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "La pista",
+      "imagen": "imagenes/curiosidades/canva-07.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "La fideua de Pascual",
+      "imagen": "imagenes/curiosidades/canva-08.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Setica",
+      "imagen": "imagenes/curiosidades/canva-09.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Cazafantasmas",
+      "imagen": "imagenes/curiosidades/canva-10.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Otra Fideua",
+      "imagen": "imagenes/curiosidades/canva-11.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Los gemelos",
+      "imagen": "imagenes/curiosidades/canva-12.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "El baño del 6",
+      "imagen": "imagenes/curiosidades/canva-13.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Setas en el chopo",
+      "imagen": "imagenes/curiosidades/canva-14.webp",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Arbol vaaaa",
+      "imagen": "imagenes/curiosidades/canva-15.jpg",
+      "video": "imagenes/curiosidades/canva-15.mp4",
+      "paginaCanva": 33,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "El moncayo",
+      "imagen": "imagenes/curiosidades/canva-16.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Upupa epops o Abubilla",
+      "imagen": "imagenes/curiosidades/canva-17.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Se nos cae el cielo",
+      "imagen": "imagenes/curiosidades/canva-18.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "F18",
+      "imagen": "imagenes/curiosidades/canva-19.jpg",
+      "video": "imagenes/curiosidades/canva-19.mp4",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Swing",
+      "imagen": "imagenes/curiosidades/canva-20.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "la pista",
+      "imagen": "imagenes/curiosidades/canva-21.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "El ruido",
+      "imagen": "imagenes/curiosidades/canva-22.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Las chicas",
+      "imagen": "imagenes/curiosidades/canva-23.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Hoyo 3",
+      "imagen": "imagenes/curiosidades/canva-24.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Los regalos",
+      "imagen": "imagenes/curiosidades/canva-25.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "El pateo",
+      "imagen": "imagenes/curiosidades/canva-26.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Bodegon 4",
+      "imagen": "imagenes/curiosidades/canva-27.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Bodegon 5",
+      "imagen": "imagenes/curiosidades/canva-28.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "Viejos tiempos",
+      "imagen": "imagenes/curiosidades/canva-29.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    },
+    {
+      "titulo": "El pilar",
+      "imagen": "imagenes/curiosidades/canva-30.webp",
+      "paginaCanva": 34,
+      "categoria": "Curiosidades"
+    }
   ],
   "galeriaNoviembre2026": [
     {
