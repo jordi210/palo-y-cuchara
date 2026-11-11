@@ -1,0 +1,26 @@
+name: Importar Curiosidades originales desde Canva
+on:
+  push:
+    paths:
+      - ".github/workflows/importar-curiosidades-canva.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar tratamiento de imágenes sin cambios de contenido
+        run: python -m pip install --quiet Pillow requests
+      - name: Descargar fotografías y vídeos reales de Canva en alta calidad
+        run: python scripts/importar_curiosidades_canva.py
+      - name: Publicar los medios en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add imagenes/curiosidades/
+          if ! git diff --cached --quiet; then
+            git commit -m "Añadir imágenes y vídeos originales de Curiosidades desde Canva"
+            git push
+          fi
