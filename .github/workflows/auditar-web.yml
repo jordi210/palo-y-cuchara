@@ -1,0 +1,27 @@
+name: Auditoría navegación y recursos de la web
+on:
+  push:
+    paths:
+      - ".github/workflows/auditar-web.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar Chromium y Playwright
+        run: |
+          python -m pip install --quiet playwright requests
+          python -m playwright install --with-deps chromium
+      - name: Comprobar navegación y enlaces internos en navegador
+        run: python scripts/auditar_web.py
+      - name: Guardar informe de la auditoría
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-web-palo-y-cuchara
+          path: AUDITORIA_WEB.json
+          retention-days: 7
