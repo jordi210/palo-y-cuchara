@@ -1,0 +1,282 @@
+{
+  "designId": "DAGXFzXUsQA",
+  "fuente": "https://paloycucara.my.canva.site/palo-y-cuchara",
+  "paginas": [
+    33,
+    34
+  ],
+  "cantidad": 30,
+  "nota": "Correspondencia exacta de izquierda a derecha y de arriba abajo. Los recursos públicos del Canva original se descargan al repositorio; no enlazar URL temporales.",
+  "items": [
+    {
+      "orden": 1,
+      "paginaCanva": 33,
+      "titulo": "Hoyo 1",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL0U81to",
+      "imagen": "imagenes/curiosidades/canva-01.webp",
+      "video": null
+    },
+    {
+      "orden": 2,
+      "paginaCanva": 33,
+      "titulo": "Procesionaria",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL-SoNhI",
+      "imagen": "imagenes/curiosidades/canva-02.webp",
+      "video": null
+    },
+    {
+      "orden": 3,
+      "paginaCanva": 33,
+      "titulo": "Las reglas locales",
+      "tipo": "image",
+      "canvaAssetId": "MAGXLymd5dI",
+      "imagen": "imagenes/curiosidades/canva-03.webp",
+      "video": null
+    },
+    {
+      "orden": 4,
+      "paginaCanva": 33,
+      "titulo": "Escuadron de Garzas",
+      "tipo": "video",
+      "canvaAssetId": "VAGXL1BPBX4",
+      "imagen": "imagenes/curiosidades/canva-04.jpg",
+      "video": "imagenes/curiosidades/canva-04.mp4"
+    },
+    {
+      "orden": 5,
+      "paginaCanva": 33,
+      "titulo": "La bola perdida",
+      "tipo": "video",
+      "canvaAssetId": "VAGXL_HOvJQ",
+      "imagen": "imagenes/curiosidades/canva-05.jpg",
+      "video": "imagenes/curiosidades/canva-05.mp4"
+    },
+    {
+      "orden": 6,
+      "paginaCanva": 33,
+      "titulo": "El hoyo 19",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL_97TLg",
+      "imagen": "imagenes/curiosidades/canva-06.webp",
+      "video": null
+    },
+    {
+      "orden": 7,
+      "paginaCanva": 33,
+      "titulo": "La pista",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL7zMQJ0",
+      "imagen": "imagenes/curiosidades/canva-07.webp",
+      "video": null
+    },
+    {
+      "orden": 8,
+      "paginaCanva": 33,
+      "titulo": "La fideua de Pascual",
+      "tipo": "image",
+      "canvaAssetId": "MAGXLzy0H9c",
+      "imagen": "imagenes/curiosidades/canva-08.webp",
+      "video": null
+    },
+    {
+      "orden": 9,
+      "paginaCanva": 33,
+      "titulo": "Setica",
+      "tipo": "image",
+      "canvaAssetId": "MAGXF5cY-pI",
+      "imagen": "imagenes/curiosidades/canva-09.webp",
+      "video": null
+    },
+    {
+      "orden": 10,
+      "paginaCanva": 33,
+      "titulo": "Cazafantasmas",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL1iWxr0",
+      "imagen": "imagenes/curiosidades/canva-10.webp",
+      "video": null
+    },
+    {
+      "orden": 11,
+      "paginaCanva": 33,
+      "titulo": "Otra Fideua",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL15Nfes",
+      "imagen": "imagenes/curiosidades/canva-11.webp",
+      "video": null
+    },
+    {
+      "orden": 12,
+      "paginaCanva": 33,
+      "titulo": "Los gemelos",
+      "tipo": "image",
+      "canvaAssetId": "MAGXLyaDW44",
+      "imagen": "imagenes/curiosidades/canva-12.webp",
+      "video": null
+    },
+    {
+      "orden": 13,
+      "paginaCanva": 33,
+      "titulo": "El baño del 6",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL3Wfqxw",
+      "imagen": "imagenes/curiosidades/canva-13.webp",
+      "video": null
+    },
+    {
+      "orden": 14,
+      "paginaCanva": 33,
+      "titulo": "Setas en el chopo",
+      "tipo": "image",
+      "canvaAssetId": "MAGXL573ahs",
+      "imagen": "imagenes/curiosidades/canva-14.webp",
+      "video": null
+    },
+    {
+      "orden": 15,
+      "paginaCanva": 33,
+      "titulo": "Arbol vaaaa",
+      "tipo": "video",
+      "canvaAssetId": "VAGXL49tSNE",
+      "imagen": "imagenes/curiosidades/canva-15.jpg",
+      "video": "imagenes/curiosidades/canva-15.mp4"
+    },
+    {
+      "orden": 16,
+      "paginaCanva": 34,
+      "titulo": "El moncayo",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPNfzlK0",
+      "imagen": "imagenes/curiosidades/canva-16.webp",
+      "video": null
+    },
+    {
+      "orden": 17,
+      "paginaCanva": 34,
+      "titulo": "Upupa epops o Abubilla",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPHxLRf0",
+      "imagen": "imagenes/curiosidades/canva-17.webp",
+      "video": null
+    },
+    {
+      "orden": 18,
+      "paginaCanva": 34,
+      "titulo": "Se nos cae el cielo",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPGvSxXs",
+      "imagen": "imagenes/curiosidades/canva-18.webp",
+      "video": null
+    },
+    {
+      "orden": 19,
+      "paginaCanva": 34,
+      "titulo": "F18",
+      "tipo": "video",
+      "canvaAssetId": "VAGmIl14qx8",
+      "imagen": "imagenes/curiosidades/canva-19.jpg",
+      "video": "imagenes/curiosidades/canva-19.mp4"
+    },
+    {
+      "orden": 20,
+      "paginaCanva": 34,
+      "titulo": "Swing",
+      "tipo": "image",
+      "canvaAssetId": "MAG1acj3uDw",
+      "imagen": "imagenes/curiosidades/canva-20.webp",
+      "video": null
+    },
+    {
+      "orden": 21,
+      "paginaCanva": 34,
+      "titulo": "la pista",
+      "tipo": "image",
+      "canvaAssetId": "MAG1aWUNxmU",
+      "imagen": "imagenes/curiosidades/canva-21.webp",
+      "video": null
+    },
+    {
+      "orden": 22,
+      "paginaCanva": 34,
+      "titulo": "El ruido",
+      "tipo": "image",
+      "canvaAssetId": "MAG1afzH7hM",
+      "imagen": "imagenes/curiosidades/canva-22.webp",
+      "video": null
+    },
+    {
+      "orden": 23,
+      "paginaCanva": 34,
+      "titulo": "Las chicas",
+      "tipo": "image",
+      "canvaAssetId": "MAG1aU_QepY",
+      "imagen": "imagenes/curiosidades/canva-23.webp",
+      "video": null
+    },
+    {
+      "orden": 24,
+      "paginaCanva": 34,
+      "titulo": "Hoyo 3",
+      "tipo": "image",
+      "canvaAssetId": "MAG1fwNC7fU",
+      "imagen": "imagenes/curiosidades/canva-24.webp",
+      "video": null
+    },
+    {
+      "orden": 25,
+      "paginaCanva": 34,
+      "titulo": "Los regalos",
+      "tipo": "image",
+      "canvaAssetId": "MAHCc1AJjr0",
+      "imagen": "imagenes/curiosidades/canva-25.webp",
+      "video": null
+    },
+    {
+      "orden": 26,
+      "paginaCanva": 34,
+      "titulo": "El pateo",
+      "tipo": "image",
+      "canvaAssetId": "MAHDwXU5HM4",
+      "imagen": "imagenes/curiosidades/canva-26.webp",
+      "video": null
+    },
+    {
+      "orden": 27,
+      "paginaCanva": 34,
+      "titulo": "Bodegon 4",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPKe4b2w",
+      "imagen": "imagenes/curiosidades/canva-27.webp",
+      "video": null
+    },
+    {
+      "orden": 28,
+      "paginaCanva": 34,
+      "titulo": "Bodegon 5",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPIg5e7E",
+      "imagen": "imagenes/curiosidades/canva-28.webp",
+      "video": null
+    },
+    {
+      "orden": 29,
+      "paginaCanva": 34,
+      "titulo": "Viejos tiempos",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPI4aZQM",
+      "imagen": "imagenes/curiosidades/canva-29.webp",
+      "video": null
+    },
+    {
+      "orden": 30,
+      "paginaCanva": 34,
+      "titulo": "El pilar",
+      "tipo": "image",
+      "canvaAssetId": "MAGgPMr6l14",
+      "imagen": "imagenes/curiosidades/canva-30.webp",
+      "video": null
+    }
+  ]
+}
