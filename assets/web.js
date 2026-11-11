@@ -7,6 +7,8 @@ try{const local=localStorage.getItem('pyc_web_v2');c=local?JSON.parse(local):ori
 if(original.resultadosNoviembre&&!c.resultadosNoviembre)c.resultadosNoviembre=original.resultadosNoviembre;
 if(original.resultadosMensuales?.length)c.resultadosMensuales=original.resultadosMensuales;
 if(original.galeriaNoviembre2026?.length)c.galeriaNoviembre2026=original.galeriaNoviembre2026;
+// Las Curiosidades publicadas desde Canva prevalecen sobre borradores antiguos sin imágenes.
+if(original.curiosidades?.length)c.curiosidades=original.curiosidades;
 if((!Array.isArray(c.participantes)||!c.participantes.length)&&original.participantes?.length)c.participantes=original.participantes;
 if((!Array.isArray(c.puntuaciones)||!c.puntuaciones.length)&&original.puntuaciones?.length)c.puntuaciones=original.puntuaciones;
 window.PYC=c;
@@ -105,7 +107,26 @@ return `${title('Torneo de noviembre','10 de noviembre de 2026 · Entrega de pre
 <p class="album-back" style="margin-top:40px"><a class="btn green" href="galeria.html">← Todos los álbumes</a></p>
 </div></section>`;
 }
-function pageCuriosidades(){return `${title('Curiosidades','Nuestras anécdotas, lugares, paisajes y momentos inolvidables del campo.') }<section class="section"><div class="container"><div class="section-head"><div><span class="kicker">Del archivo original de Canva</span><h2>Pequeñas grandes historias</h2><p>Hemos conservado los títulos de las curiosidades de la web anterior. Las imágenes originales pendientes se añadirán sin cambiar sus nombres.</p></div></div><div class="curiosity-grid">${(c.curiosidades||[]).map(i=>imageCard(i,true)).join('')}</div><div class="notice" style="margin-top:27px">Las fotografías que aún no aparecen permanecen en la <a class="text-link" href="${url(c.sitio.origenCanva)}" target="_blank" rel="noopener">galería original de Canva</a>. No se han sustituido por fotos ajenas al club.</div></div></section>`}
+function curiosityCanvaCard(item){
+ const titulo=h(item.titulo),alt='Curiosidad original: '+titulo;
+ if(item.video){
+  return `<article class="curiosidad-canva-item curiosidad-canva-video"><video controls playsinline preload="metadata" poster="${url(item.imagen)}" aria-label="Vídeo: ${alt}"><source src="${url(item.video)}" type="video/mp4">Tu navegador no admite este vídeo.</video><h3>${titulo}</h3></article>`;
+ }
+ return `<button type="button" class="curiosidad-canva-item" data-photo="${url(item.imagen)}" aria-label="Ampliar ${alt}"><img loading="lazy" src="${url(item.imagen)}" alt="${alt}"><h3>${titulo}</h3></button>`;
+}
+function pageCuriosidades(){
+ const curiosidades=c.curiosidades||[];
+ const originales=[33,34].map((num,i)=>({num,fotos:curiosidades.filter(x=>x.paginaCanva===num),pagina:i+1}));
+ return `${title('Curiosidades','Las fotografías, los vídeos y los recuerdos originales de Palo y Cuchara, recuperados de nuestra web de Canva.')}
+<section class="section"><div class="container">
+<div class="section-head"><div><span class="kicker">Del archivo original de Palo y Cuchara</span><h2>Pequeñas grandes historias</h2><p>Las mismas curiosidades que aparecían en Canva, en su orden original y con sus títulos. Pulsa una fotografía para ampliarla o reproduce los vídeos.</p></div></div>
+${originales.map(g=>`<section class="curiosidades-canva-page" aria-label="Curiosidades originales de Canva, página ${g.pagina}">
+  <div class="curiosidades-canva-heading"><span>Curiosidades</span><small>${g.pagina} / 2</small></div>
+  <div class="curiosidades-canva-grid">${g.fotos.map(curiosityCanvaCard).join('')}</div>
+</section>`).join('')}
+<p class="hint" style="margin-top:18px">Imágenes y vídeos originales del archivo de Palo y Cuchara, conservados sin sustituirlos por imágenes ajenas.</p>
+</div></section>`;
+}
 function pagePatrocinadores(){return `${title('Nuestros patrocinadores','Gracias a quienes hacen posible que Palo y Cuchara siga creciendo como punto de encuentro deportivo y social.') }<section class="section sponsors-section"><div class="container"><div class="section-head"><div><span class="kicker">Palo y Cuchara 2026–2027</span><h2>Un equipo dentro y fuera del campo</h2><p>El golf se disfruta todavía más cuando va acompañado de amistad y buenos momentos.</p></div></div><div class="sponsors-grid">
 <a class="sponsor-card sponsor-care" href="https://bodegascare.com/" target="_blank" rel="noopener" aria-label="Visitar la web oficial de Bodegas CARE"><div class="sponsor-graphic sponsor-official-graphic"><img class="sponsor-official-logo care-official-logo" src="https://static.wixstatic.com/media/9b3898_b56a218bcc684d018ad9ffe3dbd80bf7~mv2.png" alt="Logotipo oficial completo de Bodegas CARE, texto e ilustración del rostro" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://www.vinoaragones.com/wp-content/uploads/2020/03/logo-care-grande-1-300x139.png'}else{this.hidden=true;this.nextElementSibling.hidden=false}"><div class="logo-fallback" hidden><span class="sponsor-overline">BODEGAS</span><strong class="care-mark">CARE</strong><span class="sponsor-submark">D.O. CARIÑENA · ARAGÓN</span></div></div><div class="sponsor-info"><h3>Bodegas CARE</h3><p>Una bodega de Cariñena que une tradición e innovación. Gracias por formar parte de Palo y Cuchara.</p><span class="text-link">Visitar su web ↗</span></div></a>
 <a class="sponsor-card sponsor-idp" href="https://www.aragongolf.com/clubs/idp-golf-base-aerea/" target="_blank" rel="noopener" aria-label="Información del I.D.P. Golf Base Aérea en la Federación Aragonesa de Golf"><div class="sponsor-graphic sponsor-official-graphic"><img class="sponsor-official-logo idp-official-logo" src="https://www.aragongolf.com/ficheros/campos/logogolftransparente_1_1360068243.png" alt="Escudo oficial I.D.P. Golf Base Aérea Zaragoza, león dorado y aviones sobre fondo rojo y azul" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="logo-fallback" hidden><div class="idp-emblem" aria-hidden="true">⛳</div><strong class="idp-mark">I.D.P. GOLF</strong><span class="sponsor-submark">BASE AÉREA DE ZARAGOZA</span></div></div><div class="sponsor-info"><h3>I.D.P. Golf Base Aérea</h3><p>El campo y punto de encuentro en el que compartimos nuestras jornadas de competición.</p><span class="text-link">Información del campo ↗</span></div></a>
