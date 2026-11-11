@@ -24,3 +24,13 @@ La pestaña [Resultados](resultados.html) es un índice de clasificaciones organ
 - Se actualizan los enlaces canónicos de las páginas a `https://paloycuchara.es/` y se fuerza el salto a HTTPS en el navegador si un visitante llega por HTTP.
 - **Pendiente de configuración de administrador:** en GitHub → Settings → Pages, activar **Enforce HTTPS** para redirigir de HTTP a HTTPS a nivel de servidor. El certificado de GitHub Pages ya está aprobado, pero la opción no puede activarse con los permisos actuales del conector.
 - La batería automática de pruebas se ejecuta con `scripts/auditar_web.py` y puede lanzarse desde GitHub Actions → «Auditoría navegación y recursos de la web».
+
+## Posicionamiento en Google (SEO)
+
+- `robots.txt` permite el rastreo y señala el mapa `sitemap.xml`; este último incluye las 11 páginas públicas y omite el editor.
+- Cada página tiene título, descripción, URL canónica, etiquetas sociales (Open Graph/Twitter), datos estructurados y contenido HTML visible sin JavaScript.
+- La lista de páginas que deben aparecer en Google se mantiene en `docs/seo-paginas.json`.
+- **Al publicar cualquier cambio de datos**: ejecutar `node scripts/actualizar-seo.mjs`, incluir los archivos HTML y el sitemap que cambien, y comprobar `node scripts/actualizar-seo.mjs --check`.
+- GitHub Actions → **Comprobar SEO y páginas indexables** valida que las 11 páginas, el sitemap y los metadatos están actualizados.
+- **Google Search Console:** la propiedad del dominio `paloycuchara.es` debe ser verificada por un propietario con acceso a su cuenta de Google; después se envía `https://paloycuchara.es/sitemap.xml`. Subir el mapa a GitHub **no lo envía automáticamente** a Search Console.
+- La indexación y las posiciones dependen de Google. No hay garantías de aparecer entre los primeros resultados.

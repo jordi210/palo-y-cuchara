@@ -92,3 +92,16 @@ La tabla de **Orden de mérito** contiene exactamente estas columnas, tanto para
 - La columna final **Puntos** mantiene la clasificación acumulada de la temporada; al cerrar la temporada aplica los dos descartes previstos.
 - Las ocho columnas están visibles desde noviembre, aunque no se hayan celebrado los meses futuros. En dispositivos pequeños la tabla se desplaza horizontalmente, manteniendo la posición y el nombre del jugador a la vista.
 - Los encabezados y las puntuaciones se generan con `mesesOrdenMerito()`, `playersFor()` y `renderTable()` en `assets/web.js`. Para próximas temporadas se utilizan automáticamente los años de `sitio.temporada` del archivo `contenido.js`.
+
+## Mantener el posicionamiento de Google al publicar un torneo
+
+Cuando se publique el siguiente torneo (fotos o resultados), además de actualizar las páginas y los datos:
+
+1. Añadir las **nuevas páginas mensuales** (galería y resultados) al inventario `docs/seo-paginas.json`, con un título y una descripción propios, su `data-page`, y en resultados el `data-month`.
+2. Actualizar en el HTML de cada página nueva su `<title>`, `meta description`, `canonical`, metadatos para redes sociales y JSON-LD siguiendo los ejemplos de noviembre.
+3. Regenerar las versiones HTML estáticas con `node scripts/actualizar-seo.mjs`. Este paso es **obligatorio** después de cambiar `contenido.js` o `assets/web.js`: evita que Google vea información antigua mientras espera a ejecutar JavaScript.
+4. Incluir en el mismo commit las instantáneas HTML generadas y el `sitemap.xml` actualizado.
+5. Verificar `node scripts/actualizar-seo.mjs --check` y la tarea de GitHub Actions **«Comprobar SEO y páginas indexables»**; después comprobar la publicación de GitHub Pages.
+6. Revisar en Google Search Console la indexación de `https://paloycuchara.es/` y enviar `https://paloycuchara.es/sitemap.xml` una vez verificada la propiedad del dominio.
+
+No publicar meses ficticios ni alterar la clasificación oficial solo para mejorar el posicionamiento. El SEO debe describir fielmente el contenido.
