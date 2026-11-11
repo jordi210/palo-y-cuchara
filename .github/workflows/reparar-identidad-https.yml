@@ -1,0 +1,75 @@
+name: Reparar logotipo oficial y HTTPS
+on:
+  push:
+    paths:
+      - ".github/workflows/reparar-identidad-https.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  identidad-y-seguridad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recuperar logotipo oficial I.D.P. Golf y alojarlo localmente
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,io
+          from pathlib import Path
+          from PIL import Image
+          u="https://www.aragongolf.com/ficheros/campos/logogolftransparente_1_1360068243.png"
+          urls=[u,
+                "https://www.turismogolfaragon.es/ficheros/campos/logogolftransparente_1_1360068243.png",
+                "https://images.weserv.nl/?url=www.aragongolf.com/ficheros/campos/logogolftransparente_1_1360068243.png",
+                "https://wsrv.nl/?url=www.aragongolf.com/ficheros/campos/logogolftransparente_1_1360068243.png"]
+          target=Path("imagenes/logo-idp-golf-oficial.png")
+          last=[]
+          for src in urls:
+            try:
+              r=requests.get(src,timeout=22,headers={"User-Agent":"Mozilla/5.0","Referer":"https://www.aragongolf.com/"})
+              print("FETCH",r.status_code,len(r.content),r.headers.get("Content-Type"),src,flush=True)
+              if r.status_code==200 and len(r.content)>5000:
+                im=Image.open(io.BytesIO(r.content))
+                im.verify()
+                im=Image.open(io.BytesIO(r.content))
+                if im.width<300 or im.height<300:continue
+                target.parent.mkdir(parents=True,exist_ok=True)
+                im.save(target,format="PNG")
+                print("SAVED",str(target),im.size,target.stat().st_size,flush=True)
+                break
+            except Exception as e:
+              print("ERROR",type(e).__name__,str(e)[:160],flush=True)
+          if not target.exists():
+            print("NO SE PUDO OBTENER LOGO - No se publicará un sustituto falso.")
+          PY
+      - name: Publicar logo oficial si está disponible
+        shell: bash
+        run: |
+          if [ -s imagenes/logo-idp-golf-oficial.png ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add imagenes/logo-idp-golf-oficial.png
+            if ! git diff --cached --quiet; then git commit -m "Alojar logotipo oficial IDP Golf localmente"; git push; fi
+          fi
+      - name: Activar HTTPS obligatorio en GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os,requests
+          base="https://api.github.com/repos/"+os.environ["GH_REPO"]+"/pages"
+          headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}
+          try:
+            current=requests.get(base,headers=headers,timeout=15)
+            print("CURRENT",current.status_code,current.text[:1000])
+            if current.status_code==200 and not current.json().get("https_enforced"):
+              r=requests.put(base,headers=headers,json={"https_enforced":True},timeout=15)
+              print("ENFORCE_HTTPS",r.status_code,r.text[:500])
+            after=requests.get(base,headers=headers,timeout=15)
+            print("FINAL",after.status_code,after.text[:1000])
+          except Exception as e: print("HTTPS_ERROR",str(e)[:300])
+          PY
