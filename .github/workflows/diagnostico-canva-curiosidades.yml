@@ -18,7 +18,7 @@ jobs:
               r=requests.get(u,timeout=18,headers={"User-Agent":"Mozilla/5.0"})
               print("SITE",u,r.status_code,"length",len(r.content),"at",r.url,"content_type",r.headers.get("content-type"))
               src=r.text
-              found=re.findall(r'(?:src|href)=[\\"\\']([^\\"\\']+)',src)
+              found=re.findall(r'https?://[^\\s<>"\\']+',src)
               links=[html.unescape(z) for z in found if any(s in z for s in ['canva','media','image','assets','.jpg','.png','.mp4','.webp'])]
               print("RELEVANT LINKS",len(links),"first",links[:15])
               print("IMAGE UUID MATCHES", len(re.findall(r'ifs[^\\s]{0,200}',src)))
