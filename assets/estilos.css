@@ -179,3 +179,31 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
   .nav-submenu{display:grid;position:static;box-shadow:none;border:0;border-left:2px solid #f26c2d;border-radius:0;margin:0 0 4px 15px;padding:0 0 0 8px;background:transparent}
   .menu .nav-submenu a{padding:9px 12px}
 }
+
+/* Orden de mérito: puntuaciones mensuales noviembre–junio y total acumulado. */
+.merito-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-gutter:stable;max-width:100%;-webkit-overflow-scrolling:touch}
+.merito-scroll:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.merito-table{min-width:1230px;width:100%;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}
+.merito-table th,.merito-table td{padding:13px 11px;white-space:nowrap;vertical-align:middle}
+.merito-table thead th{position:relative;background:#eaf1fb;color:#36587c;letter-spacing:.025em;font-size:12px}
+.merito-table .merito-pos{width:75px;min-width:75px;max-width:75px;position:sticky;left:0;z-index:2;text-align:center}
+.merito-table .merito-nombre{width:265px;min-width:265px;max-width:265px;position:sticky;left:75px;z-index:2;text-align:left;white-space:normal;line-height:1.3;box-shadow:5px 0 10px -9px #23477280}
+.merito-table tbody .merito-pos,.merito-table tbody .merito-nombre{background:white;color:#34465a}
+.merito-table tbody tr:nth-child(even) .merito-pos,.merito-table tbody tr:nth-child(even) .merito-nombre{background:#f8fbff}
+.merito-table tbody tr:hover .merito-pos,.merito-table tbody tr:hover .merito-nombre{background:#edf4ff}
+.merito-table thead .merito-pos,.merito-table thead .merito-nombre{z-index:4;background:#eaf1fb}
+.merito-table .merito-mes{min-width:92px;text-align:center;border-left:1px solid #e3eaf2}
+.merito-table tbody tr:nth-child(even){background:#f8fbff}
+.merito-table .merito-pendiente{color:#a8b3c1;font-size:19px}
+.merito-table .merito-total{min-width:95px;text-align:center;background:#e8f1ff;color:#264d79;border-left:2px solid #83a8d9;font-weight:800}
+.merito-table thead .merito-total{background:#d5e6ff;color:#244772}
+.merito-table tbody tr:nth-child(even) .merito-total{background:#e0ecfc}
+.merito-help{margin-top:10px;line-height:1.6}
+@media(max-width:600px){
+ .merito-table{min-width:1090px}
+ .merito-table th,.merito-table td{padding:11px 7px;font-size:12px}
+ .merito-table .merito-pos{width:49px;min-width:49px;max-width:49px;left:0}
+ .merito-table .merito-nombre{width:163px;min-width:163px;max-width:163px;left:49px;font-size:11px}
+ .merito-table .merito-mes{min-width:90px}
+ .merito-table .merito-total{min-width:88px}
+}
