@@ -32,9 +32,10 @@ try:
     p.on("pageerror",lambda e:page_errors.append(str(e)))
     p.on("response",lambda r:missing.append({"url":r.url,"status":r.status}) if r.status>=400 and r.url.startswith(URL) else None)
     response=p.goto(URL+page_path,wait_until="domcontentloaded",timeout=20000)
-    p.wait_for_timeout(600)
+    p.locator("img[loading='lazy']").evaluate_all("(els)=>els.forEach(e=>e.loading='eager')")
+    p.wait_for_timeout(850)
     links=p.locator("a[href]").evaluate_all("(els)=>els.map(a=>({text:a.innerText.trim().slice(0,110),href:a.getAttribute('href'),target:a.target}))")
-    images=p.locator("img").evaluate_all("(els)=>els.map(e=>({src:e.getAttribute('src'),alt:e.alt,loaded:e.complete&&e.naturalWidth>0,naturalWidth:e.naturalWidth}))")
+    images=p.locator("img[src]").evaluate_all("(els)=>els.map(e=>({src:e.getAttribute('src'),alt:e.alt,loaded:e.complete&&e.naturalWidth>0,naturalWidth:e.naturalWidth}))")
     videos=p.locator("video").evaluate_all("(els)=>els.map(e=>({src:e.querySelector('source')?.getAttribute('src')||e.getAttribute('src'),poster:e.getAttribute('poster'),error:e.error?.message||null}))")
     for l in links:
      if l["href"]:all_links.add((l["href"],page_path))
@@ -53,6 +54,18 @@ try:
     if page_path=="orden-merito.html":
      before=p.locator("#ranking").inner_text();p.locator("#tab-scratch").click();after=p.locator("#ranking").inner_text()
      report["functional"]["orden_tabs"]={"changed":before!=after,"rows":p.locator("#ranking tbody tr").count(),"hcap":p.locator("#tab-handicap").get_attribute("aria-selected"),"scratch":p.locator("#tab-scratch").get_attribute("aria-selected")}
+    if page_path=="patrocinadores.html":
+     img=p.locator("img.idp-official-logo")
+     report["functional"]["idp_logo"]={"src":img.get_attribute("src"),"loaded":img.evaluate("(e)=>e.complete&&e.naturalWidth>0")}
+    if page_path=="editar.html":
+     labels={}
+     for key in ["albumesMensuales","resultadosMensuales"]:
+      btn=p.locator(f"[data-section='{key}']")
+      labels[key]=btn.count()
+      if btn.count():
+       btn.click()
+       labels[key+"_title"]=p.locator("#editorContent h2").first.inner_text()
+     report["functional"]["editor_monthly"]=labels
     if page_path=="galeria.html": report["functional"]["galeria_album_link"]=p.locator("a[href='torneo-noviembre-2026.html']").count()
     if page_path=="torneo-noviembre-2026.html":
      report["functional"]["november_gallery"]={"cards":p.locator(".photo-card").count(),"missing":p.locator(".missing-photo").count()}
@@ -88,6 +101,22 @@ try:
     mp.locator("#mainMenu a[href='galeria.html']").first.click(timeout=4000)
     report["mobile"]["navigate_after_menu"]=mp.url
    except Exception as e:report["mobile"]["nav_error"]=str(e)[:250]
+   report["responsive"]={}
+   for width in [390,768,1024,1120,1366]:
+    vp=browser.new_context(viewport={"width":width,"height":850},locale="es-ES")
+    q=vp.new_page()
+    q.goto(URL+"index.html",wait_until="domcontentloaded")
+    q.wait_for_timeout(200)
+    v=q.evaluate("""() => ({
+       viewport:innerWidth,docWidth:document.documentElement.scrollWidth,
+       menuButton:getComputedStyle(document.querySelector('.mobile-menu')).display,
+       menu:getComputedStyle(document.querySelector('#mainMenu')).display,
+       headerHeight:Math.round(document.querySelector('.header').getBoundingClientRect().height)
+    })""")
+    report["responsive"][str(width)]=v
+    if v["docWidth"]>v["viewport"]+3:report["issues"].append(f"Desbordamiento horizontal en {width}px: {v['docWidth']}px")
+    if width<=1120 and v["menuButton"]=="none":report["issues"].append(f"Falta menú móvil a {width}px")
+    q.close();vp.close()
    pc.close();pm.close();browser.close()
  finally: server.terminate();server.wait(timeout=5)
 except Exception as e:
@@ -95,6 +124,7 @@ except Exception as e:
 open(ROOT/"AUDITORIA_WEB.json","w",encoding="utf8").write(json.dumps(report,indent=2,ensure_ascii=False))
 print("===== AUDITORIA RESUMEN =====")
 print(json.dumps({k:report[k] for k in ["dns","issues","warnings","mobile","functional"]},ensure_ascii=False,indent=2))
+print("===== RESPONSIVE =====",json.dumps(report.get('responsive',{}),ensure_ascii=False))
 print("===== PÁGINAS =====")
 for p,v in report["pages"].items():print(p, "HTTP",v["status"],"title",v["title"],"h1",v["heading"],"links",v["links"],"images",v["images"],"broken",len(v["broken_images"]),"scripts",v["page_errors"],"console",v["console_errors"])
 print("===== ENLACES EXTERNOS =====")
