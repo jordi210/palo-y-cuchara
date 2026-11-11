@@ -36,8 +36,70 @@ function shortDate(s){if(!s)return 'Fecha pendiente';const [y,m,d]=s.split('-').
 function dayBox(s){if(!s)return ['—','POR CONFIRMAR'];const [y,m,d]=s.split('-').map(Number);return [d,new Date(y,m-1,d).toLocaleDateString('es-ES',{month:'short'}).replace('.','').toUpperCase()]}
 function eventCard(e){const [d,m]=dayBox(e.fecha);return `<article class="event-card"><div class="event-date"><strong>${h(d)}</strong><span>${h(m)}</span></div><div class="event-body"><span class="pill ${/cerrada/i.test(e.estado)?'neutral':'gold'}">${h(e.estado||'Por confirmar')}</span><h3>${h(e.titulo)}</h3><div class="event-meta"><span>📅 ${h(shortDate(e.fecha))}</span>${e.hora?`<span>🕘 ${h(e.hora)} h</span>`:''}<span>📍 ${h(e.lugar||'Campo por confirmar')}</span></div><p>${h(e.descripcion||'')}</p>${e.enlace?`<a class="text-link" target="_blank" rel="noopener" href="${url(e.enlace)}">Ver convocatoria</a>`:''}</div></article>`}
 function pageInicio(){return `<section class="hero"><div class="hero-inner"><span class="eyebrow">Temporada ${h(c.sitio.temporada)} · Zaragoza</span><h1>Palo y<br>Cuchara</h1><p>${h(c.sitio.lema)}</p><div class="hero-actions"><a class="btn gold" href="orden-merito.html">Ver orden de mérito ↗</a><a class="btn outline" href="calendario.html">📅 Calendario de torneos</a></div></div></section><section class="section"><div class="container"><div class="section-head"><div><span class="kicker">Lo que nos une</span><h2>Golf, amigos y muchas historias</h2><p>${h(c.sitio.anuncio)}</p></div></div><div class="grid"><a href="orden-merito.html" class="card"><div class="body"><span class="kicker">Temporada actual</span><h3>Orden de mérito</h3><p>Scratch y Hándicap, clasificaciones independientes y actualizables.</p><p style="margin-top:19px" class="text-link">Ver clasificaciones</p></div></a><a href="resultados.html" class="card"><div class="body"><span class="kicker">Cada jornada</span><h3>Resultados</h3><p>Consulta las clasificaciones Scratch y Hándicap de cada torneo, ordenadas por meses.</p><p style="margin-top:19px" class="text-link">Ver resultados</p></div></a><a href="campeones.html" class="card"><div class="body"><span class="kicker">Mención especial</span><h3>Los campeones</h3><p>Un homenaje a quienes brillaron en la temporada anterior.</p><p style="margin-top:19px" class="text-link">Conocer ganadores</p></div></a></div></div></section><section class="section"><div class="container"><div class="featured"><img src="${url(c.sitio.portadaImagen)}" alt="Escena de golf al sol: bolsa, palos, bola, green y avión sobrevolando el campo"><div class="copy"><span class="kicker">Golpeamos con estilo</span><h2>El espíritu del Palo y Cuchara</h2><p>Competimos, compartimos mesa y coleccionamos recuerdos. Este espacio reúne todo lo importante de nuestra temporada, sin perder las historias que nos hacen únicos.</p><a class="btn green" style="align-self:start;margin-top:10px" href="galeria.html">Entrar en la galería</a></div></div></div></section><section class="band"><div class="container"><div><strong>¿Preparado para la próxima jornada?</strong><p>Consulta las fechas, las novedades y toda la información del torneo.</p></div><a class="btn gold" href="calendario.html">Ver calendario ↗</a></div></section>`}
-function playersFor(kind){const matches=(c.puntuaciones||[]).filter(x=>x.jugador&&x.jornada);const ids=(c.jornadas||[]).map(x=>x.id);const unique=[...new Set([...(c.participantes||[]),...matches.map(x=>String(x.jugador).trim())].map(x=>String(x||'').trim()).filter(Boolean))];let rows=unique.map(name=>{const sums=ids.map(id=>{let r=matches.find(x=>String(x.jugador).trim()===name&&x.jornada===id);return r?Number(r[kind])||0:0});const eligible=ids.filter(id=>matches.some(x=>x.jornada===id));const vals=eligible.map(id=>{const i=ids.indexOf(id);return sums[i]||0;});const total=vals.reduce((a,b)=>a+b,0);const official=c.sitio.cierreTemporada&&eligible.length>=3?total-vals.slice().sort((a,b)=>a-b).slice(0,2).reduce((a,b)=>a+b,0):total;return {name,total:official,raw:total,turns:eligible.length};});return rows.sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,'es'));}
-function renderTable(kind){const rows=playersFor(kind);if(!rows.length)return `<div class="empty"><div class="symbol">⛳</div><strong>Clasificación por estrenar</strong><p>Las posiciones aparecerán cuando se publiquen los puntos de las jornadas de la temporada ${h(c.sitio.temporada)}.</p></div>`;return `<div class="table-wrap"><table><thead><tr><th>Posición</th><th>Jugador/a</th><th class="num">Puntos</th></tr></thead><tbody>${rows.map((p,i)=>`<tr><td><b>${i+1}º</b></td><td>${h(p.name)}</td><td class="num"><strong>${p.total.toLocaleString('es-ES',{maximumFractionDigits:2})}</strong></td></tr>`).join('')}</tbody></table></div>`}
+// Temporada de noviembre a junio: todos los meses se muestran desde el inicio.
+function mesesOrdenMerito(){
+ const temporada=String(c.sitio?.temporada||'');
+ const anio=Number((temporada.match(/20\d{2}/)||[])[0])||2026;
+ return [
+  ['Noviembre',11,anio],['Diciembre',12,anio],
+  ['Enero',1,anio+1],['Febrero',2,anio+1],
+  ['Marzo',3,anio+1],['Abril',4,anio+1],
+  ['Mayo',5,anio+1],['Junio',6,anio+1]
+ ].map(([nombre,mes,year])=>({nombre,clave:year+'-'+String(mes).padStart(2,'0')}));
+}
+function playersFor(kind){
+ const meses=mesesOrdenMerito();
+ const claves=new Set(meses.map(m=>m.clave));
+ const mesPorJornada=new Map((c.jornadas||[]).map(j=>[
+   String(j.id),
+   String(j.fecha||j.id).slice(0,7)
+ ]));
+ const puntuaciones=(c.puntuaciones||[]).filter(x=>x.jugador&&x.jornada).map(x=>({
+   nombre:String(x.jugador).trim(),
+   mes:mesPorJornada.get(String(x.jornada))||String(x.jornada).slice(0,7),
+   puntos:Number(x[kind])||0
+ })).filter(x=>claves.has(x.mes));
+ const mesesPublicados=new Set(puntuaciones.map(x=>x.mes));
+ const porJugador=new Map();
+ for(const p of puntuaciones){
+   if(!porJugador.has(p.nombre))porJugador.set(p.nombre,new Map());
+   const porMes=porJugador.get(p.nombre);
+   porMes.set(p.mes,(porMes.get(p.mes)||0)+p.puntos);
+ }
+ const jugadores=[...new Set([
+   ...(c.participantes||[]),
+   ...puntuaciones.map(p=>p.nombre)
+ ].map(x=>String(x||'').trim()).filter(Boolean))];
+ const rows=jugadores.map(name=>{
+   const porMes=porJugador.get(name)||new Map();
+   // null significa que la jornada todavía no tiene resultados publicados.
+   // 0 significa que el mes ya tiene resultados, pero el jugador no puntuó.
+   const puntosMes=meses.map(m=>mesesPublicados.has(m.clave)?(porMes.get(m.clave)||0):null);
+   const puntuados=puntosMes.filter(v=>v!==null);
+   const totalBruto=puntuados.reduce((a,b)=>a+b,0);
+   const descartes=c.sitio.cierreTemporada&&puntuados.length>=3
+      ?puntuados.slice().sort((a,b)=>a-b).slice(0,2).reduce((a,b)=>a+b,0):0;
+   return {name,puntosMes,total:totalBruto-descartes,raw:totalBruto,turns:puntuados.length};
+ });
+ return rows.sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,'es'));
+}
+function renderTable(kind){
+ const rows=playersFor(kind);
+ const meses=mesesOrdenMerito();
+ if(!rows.length)return `<div class="empty"><div class="symbol">⛳</div><strong>Clasificación por estrenar</strong><p>Las posiciones aparecerán cuando se publiquen los puntos de las jornadas de la temporada ${h(c.sitio.temporada)}.</p></div>`;
+ const fmt=n=>Number(n).toLocaleString('es-ES',{maximumFractionDigits:2});
+ return `<div class="table-wrap merito-scroll" role="region" tabindex="0" aria-label="Orden de mérito ${h(kind)}: desplaza la tabla horizontalmente para consultar todos los meses">
+ <table class="merito-table">
+ <caption class="visually-hidden">Orden de mérito ${h(kind)}, de noviembre a junio, con puntos mensuales y acumulado.</caption>
+ <thead><tr><th class="merito-pos" scope="col">Posición</th><th class="merito-nombre" scope="col">Jugador/a</th>
+ ${meses.map(m=>`<th class="num merito-mes" scope="col">${h(m.nombre)}</th>`).join('')}
+ <th class="num merito-total" scope="col">Puntos</th></tr></thead>
+ <tbody>${rows.map((p,i)=>`<tr><td class="merito-pos"><b>${i+1}º</b></td>
+ <th class="merito-nombre" scope="row">${h(p.name)}</th>
+ ${p.puntosMes.map((puntos,j)=>`<td class="num merito-mes ${puntos===null?'merito-pendiente':''}" title="${h(meses[j].nombre)}: ${puntos===null?'Pendiente de publicar':fmt(puntos)+' puntos'}">${puntos===null?'—':fmt(puntos)}</td>`).join('')}
+ <td class="num merito-total"><strong>${fmt(p.total)}</strong></td></tr>`).join('')}</tbody></table></div>
+ <p class="hint merito-help">Desliza la tabla hacia los lados para ver todos los meses y el total. <strong>—</strong> = resultados todavía no publicados; <strong>0</strong> = sin puntos en una jornada ya publicada.</p>`;
+}
 function pageOrden(){return `${title('Orden de mérito','Temporada actual. Dos categorías independientes: Scratch y Hándicap.')}<section class="section"><div class="container"><div class="section-head"><div><span class="kicker">Clasificaciones oficiales</span><h2>Temporada ${h(c.sitio.temporada)}</h2><p>Selecciona una categoría para consultar los puntos de los participantes.</p></div></div><div class="tabs" role="tablist" aria-label="Categorías"><button id="tab-handicap" class="active" role="tab" aria-selected="true">Hándicap</button><button id="tab-scratch" role="tab" aria-selected="false">Scratch</button></div><div id="ranking">${renderTable('handicap')}</div><div class="notice" style="margin-top:23px"><strong>Cómo funciona la clasificación:</strong> Las ausencias cuentan como cero puntos. Al terminar la temporada, se descartan los dos peores resultados de cada jugador, incluidas posibles ausencias. ${c.sitio.cierreTemporada?'Los descartes finales ya están aplicados.':'Durante la temporada se muestran los puntos acumulados sin aplicar todavía los descartes finales.'}</div><p class="hint" style="margin-top:16px">Los puntos introducidos son los oficiales facilitados por la organización; la web no inventa ni calcula puntuaciones de juego.</p><p style="margin-top:19px"><a class="btn green" href="resultados.html">Ver los resultados de cada mes ↗</a></p></div></section>`}
 function renderMensual(kind, datos){
  const lista=(datos||{})[kind]||[];
