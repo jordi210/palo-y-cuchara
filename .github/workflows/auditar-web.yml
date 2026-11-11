@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - ".github/workflows/auditar-web.yml"
+      - "scripts/auditar_web.py"
   workflow_dispatch:
 permissions:
   contents: read
