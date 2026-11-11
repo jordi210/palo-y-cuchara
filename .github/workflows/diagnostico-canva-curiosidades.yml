@@ -11,13 +11,10 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import requests,re,collections,html
-          u='https://paloycucara.my.canva.site/palo-y-cuchara'
-          r=requests.get(u,timeout=18);s=r.text
-          print('SIZE',len(s),'IMAGES',s.count('<img'),'ASSETS',s.count('_assets/'),'CSS BG',s.count('background-image'))
-          for q in ['Hoyo 1','Procesionaria','Las reglas locales','El moncayo','Bodegon 5']:
-            idx=s.find(q);print('TITLE',q,'index',idx,'SEGMENT',s[max(0,idx-1100):idx+330].replace(chr(10),' ')[:1600])
-          matches=re.findall(r'_assets/[a-zA-Z0-9_./%-]+',s)
-          print('ASSET FIRST',matches[:50]);print('ASSET COUNT',len(matches),'UNIQUE',len(set(matches)))
-          print('RESOURCE EXTENSIONS',collections.Counter(m.split('.')[-1] for m in matches))
+          import requests,re,html,collections
+          s=requests.get('https://paloycucara.my.canva.site/palo-y-cuchara',timeout=18).text
+          for q in ['MAGXL0U81to','MAGXL-SoNhI','VAGXL1BPBX4','MAGgPNfzlK0','_assets/media/','PBrBJ6MKXqFjbbxL','PBcr41BRSXfhLxls','_assets/media/fe76ad0b10ab1197e2640dd9c72d7660.jpg']:
+            idx=s.find(q);print('FIND',q,'at',idx,'CONTEXT',s[max(0,idx-270):idx+290][:560]);
+          print('MEDIA SAMPLES',re.findall(r'_assets/media/[a-z0-9]{32}\\.(?:jpg|png|mp4)',s)[:12])
+          print('MEDIA PATTERN COUNT',len(set(re.findall(r'_assets/media/[a-z0-9]{32}\\.(?:jpg|png|mp4)',s))))
           PY
