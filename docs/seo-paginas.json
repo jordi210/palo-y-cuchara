@@ -1,0 +1,91 @@
+{
+  "dominio": "https://paloycuchara.es/",
+  "paginas": [
+    {
+      "path": "index.html",
+      "page": "inicio",
+      "title": "Palo y Cuchara | Torneos de golf en Zaragoza",
+      "desc": "Palo y Cuchara: torneos de golf entre amigos en la Base Aérea de Zaragoza. Calendario, resultados Scratch y Hándicap, orden de mérito y fotografías.",
+      "image": "imagenes/campo-panoramico.jpg"
+    },
+    {
+      "path": "orden-merito.html",
+      "page": "orden",
+      "title": "Orden de mérito de golf 2026–2027 | Palo y Cuchara",
+      "desc": "Clasificación acumulada de Palo y Cuchara en Zaragoza. Consulta los puntos de noviembre a junio, separados por Scratch y Hándicap.",
+      "image": "imagenes/campo-panoramico.jpg"
+    },
+    {
+      "path": "calendario.html",
+      "page": "calendario",
+      "title": "Calendario de torneos de golf en Zaragoza | Palo y Cuchara",
+      "desc": "Fechas y convocatorias de los torneos de Palo y Cuchara 2026–2027 en la Base Aérea de Zaragoza. Próximas jornadas de golf entre amigos.",
+      "image": "imagenes/campo-panoramico.jpg"
+    },
+    {
+      "path": "resultados.html",
+      "page": "resultados",
+      "title": "Resultados de torneos de golf por meses | Palo y Cuchara",
+      "desc": "Resultados de golf de Palo y Cuchara, Zaragoza. Elige cada mes y consulta las clasificaciones completas Scratch y Hándicap de los torneos.",
+      "image": "imagenes/torneo-noviembre-2026/foto-01.webp"
+    },
+    {
+      "path": "resultados-noviembre-2026.html",
+      "page": "resultados-mes",
+      "month": "2026-11",
+      "title": "Resultados de noviembre 2026: Scratch y Hándicap | Palo y Cuchara",
+      "desc": "Clasificaciones del torneo de golf de noviembre de 2026 de Palo y Cuchara en Zaragoza: posiciones y puntos Scratch y Hándicap de cada jugador.",
+      "image": "imagenes/torneo-noviembre-2026/foto-01.webp",
+      "parent": {
+        "name": "Resultados",
+        "path": "resultados.html"
+      }
+    },
+    {
+      "path": "galeria.html",
+      "page": "galeria",
+      "title": "Galería de torneos de golf en Zaragoza | Palo y Cuchara",
+      "desc": "Álbumes de fotografías de los torneos mensuales de Palo y Cuchara en Zaragoza. Ganadores, entrega de premios y momentos entre amigos.",
+      "image": "imagenes/torneo-noviembre-2026/foto-01.webp"
+    },
+    {
+      "path": "torneo-noviembre-2026.html",
+      "page": "torneo-noviembre",
+      "title": "Fotos del torneo de noviembre 2026 | Palo y Cuchara Zaragoza",
+      "desc": "Fotografías del torneo de golf de noviembre 2026 de Palo y Cuchara: ganadores Scratch y Hándicap, entrega de premios y comida en La Bolera.",
+      "image": "imagenes/torneo-noviembre-2026/foto-01.webp",
+      "parent": {
+        "name": "Galería",
+        "path": "galeria.html"
+      }
+    },
+    {
+      "path": "campeones.html",
+      "page": "campeones",
+      "title": "Campeones 2025–2026 | Palo y Cuchara Golf Zaragoza",
+      "desc": "Conoce a los campeones de la temporada 2025–2026 de Palo y Cuchara: ganadores Scratch, Hándicap y subcampeón en Zaragoza.",
+      "image": "imagenes/campo-panoramico.jpg"
+    },
+    {
+      "path": "curiosidades.html",
+      "page": "curiosidades",
+      "title": "Curiosidades y recuerdos de golf | Palo y Cuchara Zaragoza",
+      "desc": "Fotos y vídeos originales de curiosidades de Palo y Cuchara: campo, anécdotas y recuerdos del golf en la Base Aérea de Zaragoza.",
+      "image": "imagenes/curiosidades/canva-01.webp"
+    },
+    {
+      "path": "normas.html",
+      "page": "normas",
+      "title": "Normas del campo y correspondencias | Palo y Cuchara Golf",
+      "desc": "Normas de convivencia, etiqueta, seguridad y correspondencias del golf en la Base Aérea de Zaragoza, reunidas por Palo y Cuchara.",
+      "image": "imagenes/campo-panoramico.jpg"
+    },
+    {
+      "path": "patrocinadores.html",
+      "page": "patrocinadores",
+      "title": "Patrocinadores de Palo y Cuchara | Golf en Zaragoza",
+      "desc": "Patrocinadores y colaboradores de los torneos Palo y Cuchara en Zaragoza: Bodegas CARE, I.D.P. Golf Base Aérea y La Bolera.",
+      "image": "imagenes/campo-panoramico.jpg"
+    }
+  ]
+}
