@@ -1,5 +1,11 @@
 (function(){
 'use strict';
+// Seguridad adicional: si se entra por HTTP al dominio oficial, llevar al visitante a HTTPS.
+// La imposición a nivel de servidor debe activarse también en GitHub Pages.
+if(window.location?.protocol==='http:' && /^(www\.)?paloycuchara\.es$/i.test(window.location.hostname)){
+  window.location.replace('https://'+window.location.host+window.location.pathname+window.location.search+window.location.hash);
+  return;
+}
 const original=window.PYC_CONTENT||{};
 let c;
 try{const local=localStorage.getItem('pyc_web_v2');c=local?JSON.parse(local):original;}catch(_){c=original;}
