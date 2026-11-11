@@ -1,0 +1,28 @@
+name: Diagnóstico temporal recursos de Curiosidades Canva
+on:
+  push:
+    paths: [".github/workflows/diagnostico-canva-curiosidades.yml"]
+  workflow_dispatch:
+jobs:
+  examinar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Examinar recursos públicos de Canva
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,re,collections,html
+          urls=["https://paloycucara.my.canva.site/palo-y-cuchara","https://paloycucara.my.canva.site","https://www.canva.com/d/eE4-h3FTQ15UkLe"]
+          for u in urls:
+            try:
+              r=requests.get(u,timeout=18,headers={"User-Agent":"Mozilla/5.0"})
+              print("SITE",u,r.status_code,"length",len(r.content),"at",r.url,"content_type",r.headers.get("content-type"))
+              src=r.text
+              found=re.findall(r'(?:src|href)=[\\"\\']([^\\"\\']+)',src)
+              links=[html.unescape(z) for z in found if any(s in z for s in ['canva','media','image','assets','.jpg','.png','.mp4','.webp'])]
+              print("RELEVANT LINKS",len(links),"first",links[:15])
+              print("IMAGE UUID MATCHES", len(re.findall(r'ifs[^\\s]{0,200}',src)))
+              print("CONTENT TITLES", [ (q,src.lower().find(q)) for q in ['curiosidades','procesionaria','hoyo 1','moncayo','fideua'] ])
+              print("HTML HEAD",src[:450])
+            except Exception as e: print("ERR",u,str(e)[:350])
+          PY
