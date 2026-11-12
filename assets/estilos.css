@@ -207,3 +207,8 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
  .merito-table .merito-mes{min-width:90px}
  .merito-table .merito-total{min-width:88px}
 }
+
+/* Cuatro enlaces principales de inicio: 4 columnas en escritorio y adaptación a móviles. */
+.grid.home-links{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.grid.home-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.grid.home-links{grid-template-columns:1fr}}
