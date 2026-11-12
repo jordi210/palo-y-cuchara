@@ -227,3 +227,48 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
   .merito-table .merito-total{width:7%;min-width:0}
   .merito-table thead .merito-mes{font-size:11px}
 }
+
+/* Menú móvil desplegable inspirado en la referencia: apartados y subapartados claros. */
+.pyc-accordion{display:none}
+@media(max-width:1120px){
+  .menu{display:none}
+  .pyc-accordion{
+    position:absolute;top:78px;left:0;right:0;z-index:100;
+    width:100%;max-height:calc(100vh - 78px);max-height:calc(100dvh - 78px);
+    overflow:auto;overscroll-behavior:contain;background:#fff;
+    box-shadow:0 18px 30px rgba(20,43,70,.16);padding:10px clamp(18px,5vw,58px) 28px;
+    border-top:1px solid #dce4ef
+  }
+  .pyc-accordion.open{display:block}
+  .pyc-accordion .accordion-home,.pyc-accordion .accordion-group>summary{
+    display:flex;align-items:center;justify-content:space-between;
+    width:100%;min-height:64px;padding:16px 18px;
+    font-size:19px;font-weight:800;letter-spacing:.015em;color:#2d3e56;
+    border-bottom:1px solid #e1e6ed;border-radius:0;background:#fff;cursor:pointer
+  }
+  .pyc-accordion .accordion-home:hover,.pyc-accordion .accordion-group>summary:hover{background:#f0f5fa}
+  .pyc-accordion .accordion-home.active{background:var(--green);color:#fff;border-radius:4px}
+  .pyc-accordion .accordion-group>summary{list-style:none}
+  .pyc-accordion .accordion-group>summary::-webkit-details-marker{display:none}
+  .pyc-accordion .accordion-arrow{
+    width:11px;height:11px;flex:0 0 11px;margin-right:9px;
+    border:solid currentColor;border-width:0 3px 3px 0;
+    transform:rotate(45deg);transition:transform .15s ease
+  }
+  .pyc-accordion .accordion-group[open] .accordion-arrow{transform:rotate(225deg)}
+  .pyc-accordion .accordion-panel{padding:0 0 5px 22px;background:#fff}
+  .pyc-accordion .accordion-link{
+    display:block;padding:18px 16px;min-height:59px;
+    font-size:17px;font-weight:650;color:#35465b;
+    border-bottom:1px solid #e2e7ed
+  }
+  .pyc-accordion .accordion-link:hover{background:#f2f6fb}
+  .pyc-accordion .accordion-link.active{color:var(--deep);background:#e9f1fc;border-left:4px solid var(--gold)}
+  .pyc-accordion a:focus-visible,.pyc-accordion summary:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+}
+@media(max-width:550px){
+  .pyc-accordion{padding:8px 15px 24px}
+  .pyc-accordion .accordion-home,.pyc-accordion .accordion-group>summary{font-size:17px;min-height:58px;padding:13px 12px}
+  .pyc-accordion .accordion-panel{padding-left:13px}
+  .pyc-accordion .accordion-link{font-size:16px;padding:15px 12px}
+}
