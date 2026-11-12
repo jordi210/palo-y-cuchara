@@ -212,3 +212,18 @@ a.sponsor-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(35,7
 .grid.home-links{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1100px){.grid.home-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.grid.home-links{grid-template-columns:1fr}}
+
+/* Orden de mérito en ordenador: última columna siempre visible y tabla completa en escritorio. */
+@media (min-width:801px){
+  .merito-table .merito-total{position:sticky;right:0;z-index:3;box-shadow:-6px 0 12px -8px rgba(35,76,128,.4)}
+  .merito-table thead .merito-total{z-index:5}
+}
+@media (min-width:1120px){
+  .merito-table{min-width:0;table-layout:fixed}
+  .merito-table th,.merito-table td{padding:12px 7px}
+  .merito-table .merito-pos{width:6%;min-width:0;max-width:none}
+  .merito-table .merito-nombre{width:21%;min-width:0;max-width:none}
+  .merito-table .merito-mes{width:8.25%;min-width:0}
+  .merito-table .merito-total{width:7%;min-width:0}
+  .merito-table thead .merito-mes{font-size:11px}
+}
