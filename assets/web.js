@@ -30,15 +30,15 @@ const url=s=>{s=String(s||'');return /^(https?:\/\/|imagenes\/|data:image\/(?:pn
 const links=[['inicio','Inicio','index.html'],['orden','Orden de mérito','orden-merito.html'],['calendario','📅 Calendario','calendario.html'],['resultados','Resultados','resultados.html'],['galeria','Galería','galeria.html'],['campeones','Campeones 25-26','campeones.html'],['normas','Normas','normas.html'],['patrocinadores','Patrocinadores','patrocinadores.html']];
 // Menú tipo acordeón para móviles y tabletas. En escritorio se conserva la navegación horizontal.
 const accLink=(href,label,current)=>`<a href="${href}" class="accordion-link${current?' active':''}" ${current?'aria-current="page"':''}>${label}</a>`;
-const accClub=['campeones','normas','curiosidades'].includes(page);
-const accTorneos=['orden','calendario','resultados','resultados-mes','galeria','torneo-noviembre'].includes(page);
+const accClub=['campeones','normas'].includes(page);
+const accTorneos=['orden','calendario','resultados','resultados-mes'].includes(page);
+const accGaleria=['galeria','torneo-noviembre','curiosidades'].includes(page);
 const mobileAccordion=`<nav class="pyc-accordion" id="mobileAccordion" aria-label="Menú desplegable">
 <a href="index.html" class="accordion-home${page==='inicio'?' active':''}" ${page==='inicio'?'aria-current="page"':''}>INICIO</a>
 <details class="accordion-group" ${accClub?'open':''}>
 <summary>PALO Y CUCHARA<span class="accordion-arrow" aria-hidden="true"></span></summary>
 <div class="accordion-panel">
 ${accLink('campeones.html','Campeones 25–26',page==='campeones')}
-${accLink('curiosidades.html','Curiosidades',page==='curiosidades')}
 ${accLink('normas.html','Normas y reglamento',page==='normas')}
 </div></details>
 <details class="accordion-group" ${accTorneos?'open':''}>
@@ -47,12 +47,27 @@ ${accLink('normas.html','Normas y reglamento',page==='normas')}
 ${accLink('calendario.html','Calendario',page==='calendario')}
 ${accLink('orden-merito.html','Orden de mérito',page==='orden')}
 ${accLink('resultados.html','Resultados por meses',page==='resultados'||page==='resultados-mes')}
-${accLink('galeria.html','Galería de imágenes mensual',page==='galeria'||page==='torneo-noviembre')}
+</div></details>
+<details class="accordion-group" ${accGaleria?'open':''}>
+<summary>GALERÍA<span class="accordion-arrow" aria-hidden="true"></span></summary>
+<div class="accordion-panel">
+${accLink('galeria.html','Galería de fotos',page==='galeria'||page==='torneo-noviembre')}
+${accLink('curiosidades.html','Curiosidades',page==='curiosidades')}
 </div></details>
 <a href="patrocinadores.html" class="accordion-home${page==='patrocinadores'?' active':''}" ${page==='patrocinadores'?'aria-current="page"':''}>PATROCINADORES</a>
 </nav>`;
-const header=`<header class="header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="Palo y Cuchara, inicio"><span class="brand-emblem" role="img" aria-label="Logotipo oficial de Palo y Cuchara"></span><span class="brand-copy"><strong>Palo y Cuchara</strong><small>Golf entre amigos</small></span></a><button id="menuToggle" class="mobile-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileAccordion">☰</button><nav id="mainMenu" class="menu" aria-label="Navegación principal">${links.map(([id,txt,href])=>id==='galeria'?`<div class="nav-dropdown"><a class="${page==='galeria'||page==='torneo-noviembre'||page==='curiosidades'?'active':''}" href="galeria.html">Galería <span aria-hidden="true">▾</span></a><div class="nav-submenu"><a href="galeria.html" ${page==='galeria'?'aria-current="page"':''}>Galería de fotos</a><a href="curiosidades.html" ${page==='curiosidades'?'aria-current="page"':''}>Curiosidades</a></div></div>`:`<a class="${(page===id||(page==='resultados-mes'&&id==='resultados'))?'active':''}${id==='calendario'?' calendar-tab':''}${id==='patrocinadores'?' sponsors-tab':''}" href="${href}" ${(page===id||(page==='resultados-mes'&&id==='resultados'))?'aria-current="page"':''}>${txt}</a>`).join('')}</nav>${mobileAccordion}</div></header>`;
-const dropdownCSS=document.createElement('style');dropdownCSS.textContent=`.nav-dropdown{position:relative;display:flex;align-items:center}.nav-submenu{display:none;position:absolute;top:100%;left:0;min-width:175px;background:#fff;border:1px solid #dce4ef;border-radius:9px;box-shadow:0 12px 28px #1c355033;padding:7px;z-index:80}.nav-dropdown:hover .nav-submenu,.nav-dropdown:focus-within .nav-submenu{display:grid}.menu .nav-submenu a{display:block;padding:10px 12px;white-space:nowrap}.nav-dropdown>a{white-space:nowrap}@media(max-width:800px){.nav-dropdown{display:block;width:100%}.nav-dropdown>a{display:block}.nav-submenu{display:grid;position:static;box-shadow:none;border:0;border-left:2px solid #f26c2d;border-radius:0;margin:0 0 4px 15px;padding:0 0 0 8px;background:transparent}.menu .nav-submenu a{padding:9px 12px}}`;document.head.appendChild(dropdownCSS);
+const header=`<header class="header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="Palo y Cuchara, inicio"><span class="brand-emblem" role="img" aria-label="Logotipo oficial de Palo y Cuchara"></span><span class="brand-copy"><strong>Palo y Cuchara</strong><small>Golf entre amigos</small></span></a><button id="menuToggle" class="mobile-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileAccordion">☰</button><nav id="mainMenu" class="menu" aria-label="Navegación principal">${links.map(([id,txt,href])=>id==='galeria'?`<div class="nav-dropdown"><button type="button" class="nav-trigger ${page==='galeria'||page==='torneo-noviembre'||page==='curiosidades'?'active':''}" aria-controls="gallerySubmenu" aria-expanded="false">Galería <span class="nav-chevron" aria-hidden="true">▾</span></button><div id="gallerySubmenu" class="nav-submenu"><a href="galeria.html" ${page==='galeria'?'aria-current="page"':''}>Galería de fotos</a><a href="curiosidades.html" ${page==='curiosidades'?'aria-current="page"':''}>Curiosidades</a></div></div>`:`<a class="${(page===id||(page==='resultados-mes'&&id==='resultados'))?'active':''}${id==='calendario'?' calendar-tab':''}${id==='patrocinadores'?' sponsors-tab':''}" href="${href}" ${(page===id||(page==='resultados-mes'&&id==='resultados'))?'aria-current="page"':''}>${txt}</a>`).join('')}</nav>${mobileAccordion}</div></header>`;
+const dropdownCSS=document.createElement('style');dropdownCSS.textContent=`
+.nav-dropdown{position:relative;display:flex;align-items:center}
+.menu .nav-trigger{display:flex;align-items:center;gap:6px;border:0;background:transparent;color:#455348;font-size:13px;font-weight:700;padding:9px 10px;border-radius:7px;cursor:pointer}
+.menu .nav-trigger:hover,.menu .nav-trigger.active,.nav-dropdown.is-open .nav-trigger{background:#e8ede5;color:var(--green)}
+.menu .nav-trigger:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.nav-submenu{display:none;position:absolute;top:100%;left:0;min-width:175px;background:#fff;border:1px solid #dce4ef;border-radius:9px;box-shadow:0 12px 28px #1c355033;padding:7px;z-index:80}
+.nav-dropdown.is-open .nav-submenu{display:grid}
+.nav-dropdown.is-open .nav-chevron{display:inline-block;transform:rotate(180deg)}
+.menu .nav-submenu a{display:block;padding:10px 12px;white-space:nowrap}
+.menu .nav-submenu a:hover{background:#f1f5fb}
+`;document.head.appendChild(dropdownCSS);
 const footer=`<footer class="footer"><div class="container"><div class="footer-top"><div><strong>Palo y Cuchara</strong><p>${h(c.sitio?.lema||'Golf y amistad')}</p><p>Campo de Golf · Base Aérea de Zaragoza</p></div><div class="footer-links"><a href="index.html">Inicio</a><a href="orden-merito.html">Orden de mérito</a><a href="resultados.html">Resultados mensuales</a><a href="calendario.html">Calendario</a><a href="galeria.html">Galería</a><a href="curiosidades.html">Curiosidades</a><a href="normas.html">Normas</a><a href="patrocinadores.html">Patrocinadores</a></div></div><div class="footer-bottom"><span>© Palo y Cuchara · Temporada ${h(c.sitio?.temporada)}</span><span>Golf, competición y amistad · Zaragoza</span></div></div></footer>`;
 function title(t,desc){return `<div class="page-head"><div class="container"><span class="eyebrow">Palo y Cuchara · ${h(c.sitio?.temporada)}</span><h1>${h(t)}</h1><p>${h(desc)}</p></div></div>`}
 function shortDate(s){if(!s)return 'Fecha pendiente';const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'})}
@@ -235,6 +250,15 @@ if(toggle&&mobileMenu){
  }));
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&mobileMenu.classList.contains('open')){closeMobileMenu();toggle.focus();}});
  document.addEventListener('click',event=>{if(mobileMenu.classList.contains('open')&&!event.target.closest('#mobileAccordion')&&!event.target.closest('#menuToggle'))closeMobileMenu();});
+}
+// El submenú de Galería se abre y se cierra únicamente al pulsar su botón.
+const desktopGallery=document.querySelector('#mainMenu .nav-dropdown');
+const galleryButton=desktopGallery?.querySelector('.nav-trigger');
+if(desktopGallery&&galleryButton){
+ const closeGallery=()=>{desktopGallery.classList.remove('is-open');galleryButton.setAttribute('aria-expanded','false');};
+ galleryButton.addEventListener('click',()=>{const expanded=desktopGallery.classList.toggle('is-open');galleryButton.setAttribute('aria-expanded',String(expanded));});
+ document.addEventListener('click',event=>{if(!desktopGallery.contains(event.target))closeGallery();});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&desktopGallery.classList.contains('is-open')){closeGallery();galleryButton.focus();}});
 }
 const tabH=document.getElementById('tab-handicap'),tabS=document.getElementById('tab-scratch');if(tabH&&tabS){[tabH,tabS].forEach((b,i)=>b.addEventListener('click',()=>{let kind=i===0?'handicap':'scratch';tabH.classList.toggle('active',i===0);tabS.classList.toggle('active',i===1);tabH.setAttribute('aria-selected',String(i===0));tabS.setAttribute('aria-selected',String(i===1));document.getElementById('ranking').innerHTML=renderTable(kind);}));}
 const mesH=document.getElementById('mes-handicap'),mesS=document.getElementById('mes-scratch');
